@@ -709,6 +709,9 @@ class main:
                     if(ranger):
                         ambush = True
                         app.send_message(ids["helper"], 'Ambush activado satisfactoriamente.')
+                    if(alch):
+                        time.sleep(timer)
+                        app.send_message(ids["CW"], "/on_506")
  
                     
               
