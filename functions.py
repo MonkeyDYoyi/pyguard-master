@@ -670,7 +670,8 @@ class main:
                                 cazar(mensaje)
 
                 elif (caza) and ("Be careful" in  mensaje.text):
-                    time.sleep(wait_time)
+                    if(me.id != mainIds["yoyi"] and me.id != cousinIds ["sheik"] and me.id != cousinIds ["vivi"]):
+                        time.sleep(wait_time)
                     if vago:
                         rango_max = 10
                         cazar(mensaje)
