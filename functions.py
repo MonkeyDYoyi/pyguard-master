@@ -174,6 +174,7 @@ class main:
         if (me.id == mainIds ["yoyi"]):
             caza = True
             ratio = 0.5 
+        loop_quest = False
         #end added by yoyi
 
         envio_rep = True if vago else False
@@ -302,9 +303,13 @@ class main:
 
        
         def reporte():
-            nonlocal ids, app, ordenes, auto_quest, caza, level, GC, GCmm, quest, ff, ambush, Blacksmith, en_quest, gast_stmn, sentinela, tactics, cod_trader, trader, ofertas, dice, apuntar, pet, gopher, log
+            nonlocal ids, app, ordenes, auto_quest, caza, level, GC, GCmm, quest, ff, ambush, Blacksmith, en_quest, gast_stmn, sentinela, tactics, cod_trader, trader, ofertas, dice, apuntar, pet, gopher, log, loop_quest
+            if loop_quest == True:
+                temp = '🌲🍄⛰️loop_quest'
+            else:
+                temp = quest
             app.send_message(ids["helper"], "Hola, las funciones de ayuda al CW están activadas"+"\n"+
-                 ("El autoquest a "+str(quest)+" está activado" if auto_quest else "El autoquest está desactivado")+"\n"+
+                 ("El autoquest a "+str(temp)+" está activado" if auto_quest else "El autoquest está desactivado")+"\n"+
                  ("Las órdenes automáticas están activadas" if ordenes else "Las órdenes automáticas están desactivadas")+"\n"+
                  ("Captarás las órdenes adelantadas de Ranger" if apuntar else "No captarás las órdenes adelantadas de Ranger")+"\n"+
                  ("La caza de mobs está activada" if caza else "La caza de mobs se encuentra desactivada")+"\n"+
@@ -348,7 +353,7 @@ class main:
                 
         def selector_CW(message):
             #added by Yoyi for testing porpouse last four nonlocal variables
-            nonlocal ids, app, ordenes, auto_quest, caza, level, GC, GCmm, quest, ff, ambush, Blacksmith, alch, en_quest, gast_stmn, sentinela, tactics, cod_trader, trader,ofertas, knight, collector, ranger, tregua, rango_max, dice, general, general2, orden_adelantada, defensores, apuntar, pet, warra, pasapasa, envio_rep, gopher, vago, log, vago_yoyi, ratio, ratio_actual, alredy_defending, target, offhand_atack, offhand_defend, venom, wait_time, autoOpenShop, stamina
+            nonlocal ids, app, ordenes, auto_quest, caza, level, GC, GCmm, quest, ff, ambush, Blacksmith, alch, en_quest, gast_stmn, sentinela, tactics, cod_trader, trader,ofertas, knight, collector, ranger, tregua, rango_max, dice, general, general2, orden_adelantada, defensores, apuntar, pet, warra, pasapasa, envio_rep, gopher, vago, log, vago_yoyi, ratio, ratio_actual, alredy_defending, target, offhand_atack, offhand_defend, venom, wait_time, autoOpenShop, stamina, loop_quest
             
             mensaje = message
             timer = randint(3, 7)
@@ -459,6 +464,15 @@ class main:
                
                 elif 'Many things can happen in the forest.' in mensaje.text and auto_quest:
                         time.sleep(timer)
+                        if loop_quest == True:
+                            if quest == '🌲Forest':
+                                quest='🍄Swamp'
+                            elif quest == '🍄Swamp':
+                                quest='⛰️Valley'
+                            elif quest == '⛰️Valley':
+                                quest='🌲Forest'
+                            elif quest == '🌲🍄⛰️loop_quest':
+                                quest='🌲Forest'          
                         mensaje.click(quest)
                 elif 'Stamina restored. You are ready for more adventures!' in mensaje.text and gast_stmn:
                     auto_quest=True
@@ -1097,6 +1111,11 @@ class main:
                     time.sleep(2)
                     app.send_message(ids["helper"], "Información de quest actualizada: "+quest)
 
+                elif 'loop_quest' == mensaje.text.lower():
+                    loop_quest = True
+                    quest='🌲🍄⛰️loop_quest'
+                    time.sleep(2)
+                    app.send_message(ids["helper"], "Información de quest actualizada: "+quest)
 
                 elif ("/gc"==mensaje.text.lower()):
                     GC = not GC
