@@ -1,24 +1,24 @@
 # pyTeleGame Bot
 El presente git contiene el codigo fuente utilizado para ayudar en CW
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/boreloftur/pyguard/tree/master)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/MonkeyDYoyi/pyguard-master)
 
 
 ## Colaboradores
-<b>Principal:</b> [@crazzy_fingers](https://t.me/crazzy_fingers)
+<b>Principal:</b> [@pjorgegerman](https://t.me/pjorgegerman)
 
 
-Tester: [@infernalchaoslord](https://t.me/infernalchaoslord)
+Tester: [@Hyrule_sheik](https://t.me/Hyrule_sheik)
 ## Comandos
 
 ### Módulo CW
-Para el uso de la app ha de activarse el bot [@dreadwitch_bot_bot](https://t.me/dreadwitch_bot_bot) y hacer uso de sus comandos para el manejo de las siguientes fucionalidad referentes a CW:
+Para el uso de la app ha de activarse el bot [@Mugiwaras_bot](https://t.me/Mugiwaras_bot) y hacer uso de sus comandos para el manejo de las siguientes fucionalidad referentes a CW:
 
 - Fijos:
     - /go
     - /pledge
     - Solicitar ayuda ambush en el grupo de órdenes reenviando el mensaje del ambush
-    - /report en [@mad_witch_bot](https://t.me/mad_witch_bot) da el estado de las funciones  
+    - /report en [@Mugiwaras_bot](https://t.me/Mugiwaras_bot) da el estado de las funciones  
 
 - Configurables (on/off):
     - Autoarena (/arena, fastfight loop)
