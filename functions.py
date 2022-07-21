@@ -710,7 +710,7 @@ class main:
                         ambush = True
                         app.send_message(ids["helper"], 'Ambush activado satisfactoriamente.')
                     if(alch):
-                        time.sleep(timer)
+                        time.sleep(open_shop + timer)
                         app.send_message(ids["CW"], "/on_506")
  
                     
