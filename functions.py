@@ -592,13 +592,17 @@ class main:
                     # en_quest=False
                     time.sleep(timer)
                     app.send_message(ids["CW"],'🏰Castle')
+                    time.sleep(timer) 
                 elif '🍺The tavern opens in the evening' and taberna:
                     time.sleep(timer)
                     app.send_message(ids["CW"],'🍺Tavern')
+                    time.sleep(timer) 
                 elif 'Price of one pint: 3💰' in mensaje.text and taberna:
                     time.sleep(timer)  
                     app.send_message(ids["CW"],'🍺Have a pint')
-                elif (('Conversation complete.' in mensaje.text) or ('Who sits in a pub during daytime?' in mensaje.text))and taberna:
+                    time.sleep(timer) 
+                elif ((('Conversation complete.' in mensaje.text) or ('Who sits in a pub during daytime?' in mensaje.text))and taberna):
+                    time.sleep(timer) 
                     taberna = False
                     app.send_message(ids["helper"], "Loop de taberna desactivado.")    
                                  
