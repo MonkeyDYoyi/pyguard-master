@@ -595,11 +595,13 @@ class main:
                 elif '🍺The tavern opens in the evening' and taberna:
                     time.sleep(timer)
                     mensaje.reply('🍺Tavern')
+                    time.sleep(timer)
                 elif 'Price of one pint: 3💰' in mensaje.text and taberna:
                     time.sleep(timer)  
                     mensaje.reply('🍺Have a pint')
                 elif (('Conversation complete.' in mensaje.text) or ('Who sits in a pub during daytime?' in mensaje.text))and taberna:
-                    taberna = False    
+                    taberna = False
+                    app.send_message(ids["helper"], "Loop de taberna desactivado.")    
                                  
             elif (mensaje.chat.id==ids["Auction"]) and ofertas:
                 if "Mystery" in mensaje.text: 
