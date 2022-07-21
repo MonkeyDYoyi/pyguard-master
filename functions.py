@@ -456,9 +456,9 @@ class main:
                 elif '[invalid action]' in mensaje.text and GCmm:
                     time.sleep(timer)
                     app.send_message(ids["grup_mm"], 'No hay café pa ti ☕️')
-                elif 'be back in' in mensaje.text:
+                elif "You'll be back in" in mensaje.text:
                     en_quest=True
-                    time_enquest = int(re.findall("be back in (\d+)", mensaje.text)[0])
+                    time_enquest = int(re.findall("You'll be back in (\d+)", mensaje.text)[0])
                     time.sleep(15+time_enquest*60)
                     en_quest=False
                     time.sleep(timer)
@@ -598,7 +598,7 @@ class main:
                 elif 'Price of one pint: 3💰' in mensaje.text and taberna:
                     time.sleep(timer)  
                     app.send_message(ids["CW"],'🍺Have a pint')
-                elif ((('Conversation complete.' in mensaje.text) or ('Who sits in a pub during daytime?' in mensaje.text) or ('have enough gold for a pint of ale. Why ' in mensaje.text))and taberna):
+                elif ((('Conversation complete.' in mensaje.text) or ('Who sits in a pub during daytime?' in mensaje.text) or ("You don't even have enough gold for a pint of ale. Why don't you get a job?" in mensaje.text))and taberna):
                     time.sleep(timer) 
                     taberna = False
                     app.send_message(ids["helper"], "Loop de taberna desactivado.")    
