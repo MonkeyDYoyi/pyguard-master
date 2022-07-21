@@ -545,8 +545,10 @@ class main:
                         ("Vago_yoyi desactivado."))
                     if alch:
                         if('You are ready to strike.' in mensaje.text):
+                            time.sleep(timer)
                             app.send_message(ids["CW"], "/on_508")
                         elif('You joined the defensive formations.' in mensaje.text):
+                            time.sleep(timer)
                             app.send_message(ids["CW"], "/on_506")
                             
                 elif re.search("Back in ([0-9]+)", mensaje.text):
