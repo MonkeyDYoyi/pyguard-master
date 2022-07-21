@@ -96,7 +96,7 @@ class main:
         except:
             log.warning("CW_ids not found or is an incorrect dict")
 
-        GC = True if (me.id == 835010162) else False
+        GC = True if (me.id == cousinIds ["pumpkin"]) else False
         GCmm = True if (me.id == 883822191) else False
         auto_quest=False
         caza = False
