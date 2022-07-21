@@ -1,3 +1,6 @@
+from enum import auto
+
+
 class main:
     def __init__(self, api_id, api_hash, api_session, CW_ids:dict={}):
         import logging
@@ -175,6 +178,7 @@ class main:
             caza = True
             ratio = 0.5 
         loop_quest = False
+        taberna = False
         #end added by yoyi
 
         envio_rep = True if vago else False
@@ -303,7 +307,7 @@ class main:
 
        
         def reporte():
-            nonlocal ids, app, ordenes, auto_quest, caza, level, GC, GCmm, quest, ff, ambush, Blacksmith, en_quest, gast_stmn, sentinela, tactics, cod_trader, trader, ofertas, dice, apuntar, pet, gopher, log, loop_quest
+            nonlocal ids, app, ordenes, auto_quest, caza, level, GC, GCmm, quest, ff, ambush, Blacksmith, en_quest, gast_stmn, sentinela, tactics, cod_trader, trader, ofertas, dice, apuntar, pet, gopher, log, loop_quest, taberna
             if loop_quest == True:
                 temp = '🌲🍄⛰️loop_quest'
             else:
@@ -321,6 +325,7 @@ class main:
                  ("Las ofertas del auction se encuentran activadas" if ofertas else "Las ofertas del auction se encuentran desactivadas")+"\n"+ 
                  ("Deja el invento que tú no eres sentinela /mem 🌚 no vas a vender "+cod_trader if not sentinela else ("El trader se encuentra activado con el recurso: "+cod_trader if trader else "El trader se encuentra desactivado"))+"\n"+
                  ("El loop de los dados se encuentra activado" if dice else "El loop de los dados se encuentra desactivado")+"\n"+
+                 ("El loop de taberna se encuentra activado" if taberna else "El loop de taberna se encuentra desactivado")+"\n"+
                  ("La diversión y el baño de tu mascota está en mis manos 😘"+"\n" if pet else "")+
                  ("Las funciones del GC se encuentran activadas" if GC else "Las funciones del GC se encuentran desactivadas ")+"\n"+
                  ("El tiempo de espera para cazar es de " +str(wait_time)+" segundos")+"\n"+
@@ -353,7 +358,7 @@ class main:
                 
         def selector_CW(message):
             #added by Yoyi for testing porpouse last four nonlocal variables
-            nonlocal ids, app, ordenes, auto_quest, caza, level, GC, GCmm, quest, ff, ambush, Blacksmith, alch, en_quest, gast_stmn, sentinela, tactics, cod_trader, trader,ofertas, knight, collector, ranger, tregua, rango_max, dice, general, general2, orden_adelantada, defensores, apuntar, pet, warra, pasapasa, envio_rep, gopher, vago, log, vago_yoyi, ratio, ratio_actual, alredy_defending, target, offhand_atack, offhand_defend, venom, wait_time, autoOpenShop, stamina, loop_quest
+            nonlocal ids, app, ordenes, auto_quest, caza, level, GC, GCmm, quest, ff, ambush, Blacksmith, alch, en_quest, gast_stmn, sentinela, tactics, cod_trader, trader,ofertas, knight, collector, ranger, tregua, rango_max, dice, general, general2, orden_adelantada, defensores, apuntar, pet, warra, pasapasa, envio_rep, gopher, vago, log, vago_yoyi, ratio, ratio_actual, alredy_defending, target, offhand_atack, offhand_defend, venom, wait_time, autoOpenShop, stamina, loop_quest, taberna
             
             mensaje = message
             timer = randint(3, 7)
@@ -430,7 +435,7 @@ class main:
                     else:
                         collector = False
                     
-                    if (re.search(".+?⚒.+?Class info: /class", mensaje.text)) or (re.search("⚒.+?Class info: /class", mensaje.text)) or (re.search("⚒+Class info: /class", mensaje.text)):
+                    if (re.search(".+?🛠.+?Class info: /class", mensaje.text)) or (re.search("🛠.+?Class info: /class", mensaje.text)) or (re.search("🛠+Class info: /class", mensaje.text)):
                         Blacksmith = True
                     else:
                         Blacksmith = False
@@ -541,6 +546,12 @@ class main:
                         app.send_message(ids["helper"], "Caza automatica desactivada."+"\n"+
                         ("Ambush automatico desactivado.")+"\n"+
                         ("Vago_yoyi desactivado."))
+                    if alch:
+                        if('You are ready to strike.' in mensaje.text):
+                            app.send_message(ids["CW"], "/on_508")
+                        elif('You joined the defensive formations.' in mensaje.text):
+                            app.send_message(ids["CW"], "/on_506")
+                            
                 elif re.search("Back in ([0-9]+)", mensaje.text):
                     quest_time = int(re.findall("Back in ([0-9]+)", mensaje.text)[0])
                 elif re.search("carry ([0-9]+)", mensaje.text.lower()) and trader:
@@ -573,8 +584,24 @@ class main:
                     app.send_message(ids["helper"], "La caza de mobs se encuentra desactivada")
                     # app.send_message(ids["helper"], "Vago_yoyi desactivado")  
                 elif 'You are preparing for a fight' in mensaje.text:
-                    wait_time = wait_time + 1       
-              
+                    wait_time = wait_time + 1
+
+                elif 'You took a pint of cold ale.' in mensaje.text and taberna:
+                    # en_quest=True
+                    time_enquest = 5
+                    time.sleep(15+time_enquest*60)
+                    # en_quest=False
+                    time.sleep(timer)
+                    mensaje.reply('🏰Castle')
+                elif '🍺The tavern opens in the evening' and taberna:
+                    time.sleep(timer)
+                    mensaje.reply('🍺Tavern')
+                elif 'Price of one pint: 3💰' in mensaje.text and taberna:
+                    time.sleep(timer)  
+                    mensaje.reply('🍺Have a pint')
+                elif 'Conversation complete.' in mensaje.text and taberna:
+                    taberna = False    
+                                 
             elif (mensaje.chat.id==ids["Auction"]) and ofertas:
                 if "Mystery" in mensaje.text: 
                     time.sleep(timer)
@@ -1192,9 +1219,9 @@ class main:
                     dice = not dice
                     app.send_message(ids["helper"], "El loop de los dados se encuentra activado" if dice else "El loop de los dados se encuentra desactivado") 
 
-                elif "/taberna"==mensaje.text.lower():
-                    taberna = not taberna
-                    app.send_message(ids["helper"], "El loop de taberna está activado" if taberna else "El loop de taberna se encuentra desactivado")
+                # elif "/taberna"==mensaje.text.lower():
+                #     taberna = not taberna
+                #     app.send_message(ids["helper"], "El loop de taberna está activado" if taberna else "El loop de taberna se encuentra desactivado")
                 elif "/mascota"==mensaje.text.lower():
                     pet = not pet
                     app.send_message(ids["helper"], "You are now the proud owner of a cute pet" if pet else "You just kill your pet I hope you feel great about it")
@@ -1310,13 +1337,27 @@ class main:
                     time.sleep(randint(2, 6))
                     app.send_message(ids["CW"], '/use_p39')
                     time.sleep(randint(2, 6))
+                elif "/loop_quest" == mensaje.text.lower():
+                    auto_quest = not auto_quest
+                    if auto_quest:
+                        loop_quest = True
+                        app.send_message(ids["helper"], "Autoquest activado")
+                        quest='🌲🍄⛰️loop_quest'
+                        time.sleep(2)
+                        app.send_message(ids["helper"], "Información de quest actualizada: "+quest)
+                    else:
+                        loop_quest = False
+                        app.send_message(ids["helper"], "Autoquest desactivado")
+                elif "/loop_tavern" == mensaje.text.lower():
+                    taberna = not taberna
+                    app.send_message(ids["helper"], "El loop de taberna está activado" if taberna else "El loop de taberna se encuentra desactivado")
 
                 elif "/command_list" == mensaje.text.lower():
                     app.send_message(ids["helper"], "Added by yoyi"+"\n" + "Comandos de caza:\n" + "/caza_on\n" + "/caza_off\n" + "/vago_yoyi_on\n" + "/vago_yoyi_off\n" + "/set_ratio\n" + "/set_hpRegen\n" + "/check_delay\n" + "/hunt_report\n\n" + 
                     "Comandos de batalla:\n" + "/use_peace\n" + "/use_rage\n" + "/use_morph\n" + "/use_duality\n\n" + 
                     "Comandos de quest:\n" + "/use_greed\n" + "/use_nature\n\n" + 
                     "Comandos de programación:\n" + "/venom_on\n" + "/venom_off\n" + "/offhand_atack\n" + "/offhand_defend\n" + "/auto_open_shop_on\n" + "/auto_open_shop_off\n\n" +
-                    "Otros:\n" + "/use_mana\n" + "/hero\n" + "/me\n" + "/report")
+                    "Otros:\n" + "/use_mana\n" + "/hero\n" + "/me\n" + "/report\n" + "/loop_quest\n" + "/loop_tavern")
                 elif "No cogió class" == mensaje.text.lower():
                     app.send_message(ids["CW"],"🏅Me")
                     time.sleep(10)
