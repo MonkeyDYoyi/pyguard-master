@@ -1563,7 +1563,7 @@ class main:
                 if(FirstTime):
                     FirstTime = False
                     app.send_message(ids["CW"],"🏅Me")
-                    time.sleep(1)
+                    time.sleep(3)
                     app.send_message(ids["CW"],"/hero")
                     #time.sleep(10)                    
                 #try:
