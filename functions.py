@@ -591,16 +591,13 @@ class main:
                     time.sleep(15+time_enquest*60)
                     # en_quest=False
                     time.sleep(timer)
-                    app.send_message(ids["CW"],'🏰Castle')
-                    time.sleep(timer) 
-                elif '🍺The tavern opens in the evening' and taberna:
+                    app.send_message(ids["CW"],'🏰Castle') 
+                elif '🍺The tavern opens in the evening' in mensaje.text and taberna:
                     time.sleep(timer)
                     app.send_message(ids["CW"],'🍺Tavern')
-                    time.sleep(timer) 
                 elif 'Price of one pint: 3💰' in mensaje.text and taberna:
                     time.sleep(timer)  
                     app.send_message(ids["CW"],'🍺Have a pint')
-                    time.sleep(timer) 
                 elif ((('Conversation complete.' in mensaje.text) or ('Who sits in a pub during daytime?' in mensaje.text))and taberna):
                     time.sleep(timer) 
                     taberna = False
