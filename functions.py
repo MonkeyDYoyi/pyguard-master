@@ -1,6 +1,3 @@
-from enum import auto
-
-
 class main:
     def __init__(self, api_id, api_hash, api_session, CW_ids:dict={}):
         import logging
