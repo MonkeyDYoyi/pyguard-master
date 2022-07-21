@@ -598,7 +598,7 @@ class main:
                 elif 'Price of one pint: 3💰' in mensaje.text and taberna:
                     time.sleep(timer)  
                     mensaje.reply('🍺Have a pint')
-                elif 'Conversation complete.' in mensaje.text and taberna:
+                elif (('Conversation complete.' in mensaje.text) or ('Who sits in a pub during daytime?' in mensaje.text))and taberna:
                     taberna = False    
                                  
             elif (mensaje.chat.id==ids["Auction"]) and ofertas:
