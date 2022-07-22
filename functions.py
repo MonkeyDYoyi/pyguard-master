@@ -158,6 +158,7 @@ class main:
         offhand_defend = 'none'
         venom = True
         wait_time = 0
+        tempbool = False
         autoOpenShop = True if (me.id == mainIds ["yoyi"] or me.id == cousinIds ["harry"]) else False
         stamina = 0
         # autoOpenShop = True if (me.id == cousinIds ["harry"]) else False
@@ -358,7 +359,7 @@ class main:
                 
         def selector_CW(message):
             #added by Yoyi for testing porpouse last four nonlocal variables
-            nonlocal ids, app, ordenes, auto_quest, caza, level, GC, GCmm, quest, ff, ambush, Blacksmith, alch, en_quest, gast_stmn, sentinela, tactics, cod_trader, trader,ofertas, knight, collector, ranger, tregua, rango_max, dice, general, general2, orden_adelantada, defensores, apuntar, pet, warra, pasapasa, envio_rep, gopher, vago, log, vago_yoyi, ratio, ratio_actual, alredy_defending, target, offhand_atack, offhand_defend, venom, wait_time, autoOpenShop, stamina, loop_quest, taberna
+            nonlocal ids, app, ordenes, auto_quest, caza, level, GC, GCmm, quest, ff, ambush, Blacksmith, alch, en_quest, gast_stmn, sentinela, tactics, cod_trader, trader,ofertas, knight, collector, ranger, tregua, rango_max, dice, general, general2, orden_adelantada, defensores, apuntar, pet, warra, pasapasa, envio_rep, gopher, vago, log, vago_yoyi, ratio, ratio_actual, alredy_defending, target, offhand_atack, offhand_defend, venom, wait_time, autoOpenShop, stamina, loop_quest, taberna, tempbool
             
             mensaje = message
             timer = randint(3, 7)
