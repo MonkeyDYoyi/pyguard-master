@@ -680,9 +680,8 @@ class main:
 
                 elif (caza) and ("Be careful" in  mensaje.text):
                     if(me.id == mainIds["yoyi"] or me.id == cousinIds ["sheik"] or me.id == cousinIds ["vivi"]):
-                        if mensaje.from_user.id == cousinIds ["vivi"]:
+                        if mensaje.from_user.id == cousinIds ["harry"]:
                             return None
-                        # app.send_message(ids["helper"], "El id del que envió los mobs es: "+str(mensaje.from_user.id))
                     else:
                         time.sleep(wait_time)
                     if vago:
