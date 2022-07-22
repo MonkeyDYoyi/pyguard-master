@@ -684,7 +684,7 @@ class main:
                     if(me.id == mainIds["yoyi"] or me.id == cousinIds ["sheik"] or me.id == cousinIds ["vivi"]):
                         # if mensaje.forward_from.id == cousinIds ["harry"]:
                             # testing = True
-                        app.send_message(ids["helper"], "El id del que envió los mobs es: "+str(mensaje.forward_from.id))
+                        app.send_message(ids["helper"], "El id del que envió los mobs es: "+str(mensaje.from_user.id))
                     else:
                         time.sleep(wait_time)
                     if vago:
