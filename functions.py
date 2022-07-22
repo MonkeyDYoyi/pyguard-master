@@ -605,7 +605,13 @@ class main:
                 elif ((('Conversation complete.' in mensaje.text) or ('Who sits in a pub during daytime?' in mensaje.text) or ("You don't even have enough gold for a pint of ale. Why don't you get a job?" in mensaje.text))and taberna):
                     time.sleep(timer) 
                     taberna = False
-                    app.send_message(ids["helper"], "Loop de taberna desactivado.")    
+                    app.send_message(ids["helper"], "Loop de taberna desactivado.")  
+
+                elif ((mensaje.chat.id == ids["CW"]) and ('Recipient shall send to bot:' in mensaje.text) and tempbool):
+                    tempbool = False
+                    mensaje.forward(temp)
+                    app.send_message(ids["helper"], "tempbool está en: " + str(tempbool))
+                    app.send_message(ids["helper"], "temp está en: " + str(temp))  
                                  
             elif (mensaje.chat.id==ids["Auction"]) and ofertas:
                 if "Mystery" in mensaje.text: 
@@ -1124,11 +1130,6 @@ class main:
                     app.send_message(ids["helper"], "tempbool está en: " + str(tempbool))
                     app.send_message(ids["helper"], "temp está en: " + str(temp))
 
-            elif ((mensaje.chat.id == ids["CW"]) and ('Recipient shall send to bot:' in mensaje.text) and tempbool):
-                tempbool = False
-                mensaje.forward(temp)
-                app.send_message(ids["helper"], "tempbool está en: " + str(tempbool))
-                app.send_message(ids["helper"], "temp está en: " + str(temp))
             
             #end added by yoyi
     
