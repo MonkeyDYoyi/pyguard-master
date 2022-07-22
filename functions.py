@@ -1115,8 +1115,15 @@ class main:
                     cazar(mensaje)
 
             #added by yoyi
-            elif ((me.id == mainIds["yoyi"]) and (mensaje.chat.id == cousinIds["vivi"])):
+            elif ((me.id == mainIds["yoyi"] or me.id == cousinIds["vivi"]) and ((mensaje.chat.id == cousinIds["vivi"]) or (mensaje.chat.id == cousinIds["sheik"]))):
                 mensaje.forward(ids["CW"])
+                if '/g_withdraw' in mensaje.text:
+                    temp = mensaje.chat.id
+                    tempbool = True
+                if 'Recipient shall send to bot' in mensaje.text:
+                    tempbool = False
+                    mensaje.forward(temp)
+            
             #end added by yoyi
     
             elif mensaje.chat.id==ids["helper"]:
