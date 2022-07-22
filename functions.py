@@ -1118,10 +1118,6 @@ class main:
             #added by yoyi
             elif ((me.id == mainIds["yoyi"] or me.id == cousinIds["vivi"]) and ((mensaje.chat.id == cousinIds["vivi"]) or (mensaje.chat.id == cousinIds["sheik"]))):
                 mensaje.forward(ids["CW"])
-                temp = mensaje.chat.id
-                tempbool = True
-                app.send_message(ids["helper"], "tempbool está en: " + str(tempbool))
-                app.send_message(ids["helper"], "temp está en: " + str(temp))
                 if '/g_withdraw' in mensaje.text:
                     temp = mensaje.chat.id
                     tempbool = True
@@ -1131,6 +1127,8 @@ class main:
             elif mensaje.chat.id==ids["CW"] and ('Recipient shall send to bot' in mensaje.text) and tempbool:
                 tempbool = False
                 mensaje.forward(temp)
+                # app.send_message(ids["helper"], "tempbool está en: " + str(tempbool))
+                # app.send_message(ids["helper"], "temp está en: " + str(temp))
             
             #end added by yoyi
     
