@@ -241,6 +241,9 @@ class main:
             nonlocal level, ids, rango_max
             has_link = False
             if mensaje.edit_date: return None
+            #Added by Yoyi
+
+            #End added by Yoyi
             if re.search("lvl\.([0-9]+)", mensaje.text):
                 mob_info = int(re.findall("lvl\.([0-9]+)", mensaje.text)[0])
                 log.info (mob_info)
@@ -678,7 +681,11 @@ class main:
                                 cazar(mensaje)
 
                 elif (caza) and ("Be careful" in  mensaje.text):
-                    if(me.id != mainIds["yoyi"] and me.id != cousinIds ["sheik"] and me.id != cousinIds ["vivi"]):
+                    if(me.id == mainIds["yoyi"] or me.id == cousinIds ["sheik"] or me.id == cousinIds ["vivi"]):
+                        # if mensaje.forward_from.id == cousinIds ["harry"]:
+                            # testing = True
+                        app.send_message(ids["helper"], "El id del que envió los mobs es: "+str(mensaje.forward_from.id))
+                    else:
                         time.sleep(wait_time)
                     if vago:
                         rango_max = 10
@@ -724,62 +731,58 @@ class main:
                         app.send_message(ids["CW"], "/on_506")
  
                     
-              
-                
-                    
-                    
-            elif mensaje.chat.id==ids["grup_mm"]:
+            # elif mensaje.chat.id==ids["grup_mm"]:
 
                     
               
-                if ("/g_invite" in mensaje.text) and GCmm: 
-                    time.sleep(timer)
-                    mensaje.forward(ids["CW"])
+            #     if ("/g_invite" in mensaje.text) and GCmm: 
+            #         time.sleep(timer)
+            #         mensaje.forward(ids["CW"])
                 
-                elif ("/g_withdraw" in mensaje.text) and GCmm: 
-                    mensaje.forward(ids["CW"])
-                    pasapasa = True
+            #     elif ("/g_withdraw" in mensaje.text) and GCmm: 
+            #         mensaje.forward(ids["CW"])
+            #         pasapasa = True
 
-                elif ("#oa_on"==mensaje.text.lower()) and general2:
-                    orden_adelantada = True 
-                    app.send_message(ids["Grup"], "El envío de órdenes de ranger está activado" if orden_adelantada else "El envío de órdenes de ranger está desactivado")
+            #     elif ("#oa_on"==mensaje.text.lower()) and general2:
+            #         orden_adelantada = True 
+            #         app.send_message(ids["Grup"], "El envío de órdenes de ranger está activado" if orden_adelantada else "El envío de órdenes de ranger está desactivado")
 
-                elif ("#oa_off"==mensaje.text.lower()) and general2:
-                    orden_adelantada = False
-                    app.send_message(ids["Grup"], "El envío de órdenes de ranger está activado" if orden_adelantada else "El envío de órdenes de ranger está desactivado")
+            #     elif ("#oa_off"==mensaje.text.lower()) and general2:
+            #         orden_adelantada = False
+            #         app.send_message(ids["Grup"], "El envío de órdenes de ranger está activado" if orden_adelantada else "El envío de órdenes de ranger está desactivado")
                
-                elif ("#open_shop" in mensaje.text) and Blacksmith:
-                    time.sleep(timer)
-                    app.send_message(ids["CW"], '/myshop_open')
-                elif ("⛳️Battle results:" in mensaje.text):
-                    orden_adelantada = True
-                    envio_rep = True
-                    time.sleep(timer+420)
-                    app.send_message(ids["CW"], '/report')
-                    if Blacksmith:
-                        time.sleep(open_shop)
-                        app.send_message(ids["CW"], '/myshop_open')
-                    #elif sentinela:
-                        #time.sleep(open_shop)
-                        #app.send_message(ids["CW"], '/use_tnt')
-                    #elif knight:
-                        #time.sleep(open_shop)
-                        #app.send_message(ids["CW"], '/use_cry')
-                    #elif collector:
-                        #time.sleep(open_shop)
-                        #app.send_message(ids["CW"], '/use_crl')  
-                   #if general:
-                        #time.sleep(timer+450)
-                        #app.send_message(ids["CW"], '⚽Play')  
+            #     elif ("#open_shop" in mensaje.text) and Blacksmith:
+            #         time.sleep(timer)
+            #         app.send_message(ids["CW"], '/myshop_open')
+            #     elif ("⛳️Battle results:" in mensaje.text):
+            #         orden_adelantada = True
+            #         envio_rep = True
+            #         time.sleep(timer+420)
+            #         app.send_message(ids["CW"], '/report')
+            #         if Blacksmith:
+            #             time.sleep(open_shop)
+            #             app.send_message(ids["CW"], '/myshop_open')
+            #         #elif sentinela:
+            #             #time.sleep(open_shop)
+            #             #app.send_message(ids["CW"], '/use_tnt')
+            #         #elif knight:
+            #             #time.sleep(open_shop)
+            #             #app.send_message(ids["CW"], '/use_cry')
+            #         #elif collector:
+            #             #time.sleep(open_shop)
+            #             #app.send_message(ids["CW"], '/use_crl')  
+            #        #if general:
+            #             #time.sleep(timer+450)
+            #             #app.send_message(ids["CW"], '⚽Play')  
 
         
-                elif (caza) and ("Be careful" in  mensaje.text):
-                    if vago:
-                        rango_max = 10
-                        cazar(mensaje)
-                    else:
-                        rango_max = 6
-                        cazar(mensaje)
+            #     elif (caza) and ("Be careful" in  mensaje.text):
+            #         if vago:
+            #             rango_max = 10
+            #             cazar(mensaje)
+            #         else:
+            #             rango_max = 6
+            #             cazar(mensaje)
        
 
             elif mensaje.chat.id==ids["Canal"]:
