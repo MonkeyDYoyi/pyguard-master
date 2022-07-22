@@ -1121,6 +1121,8 @@ class main:
                 if '/g_withdraw' in mensaje.text:
                     temp = mensaje.chat.id
                     tempbool = True
+                    app.send_message(ids["helper"], "tempbool está en: " + tempbool)
+                    app.send_message(ids["helper"], "temp está en: " + int(temp))
 
             elif mensaje.chat.id==ids["CW"] and ('Recipient shall send to bot' in mensaje.text) and tempbool:
                 tempbool = False
