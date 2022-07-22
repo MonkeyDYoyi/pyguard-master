@@ -1124,7 +1124,7 @@ class main:
                     app.send_message(ids["helper"], "tempbool está en: " + str(tempbool))
                     app.send_message(ids["helper"], "temp está en: " + str(temp))
 
-            elif mensaje.chat.id==ids["CW"] and ('Recipient shall send to bot' in mensaje.text) and tempbool:
+            elif ((mensaje.chat.id == ids["CW"]) and ('Recipient shall send to bot:' in mensaje.text) and tempbool):
                 tempbool = False
                 mensaje.forward(temp)
                 app.send_message(ids["helper"], "tempbool está en: " + str(tempbool))
