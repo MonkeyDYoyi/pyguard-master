@@ -241,9 +241,7 @@ class main:
             nonlocal level, ids, rango_max
             has_link = False
             if mensaje.edit_date: return None
-            #Added by Yoyi
 
-            #End added by Yoyi
             if re.search("lvl\.([0-9]+)", mensaje.text):
                 mob_info = int(re.findall("lvl\.([0-9]+)", mensaje.text)[0])
                 log.info (mob_info)
@@ -682,9 +680,9 @@ class main:
 
                 elif (caza) and ("Be careful" in  mensaje.text):
                     if(me.id == mainIds["yoyi"] or me.id == cousinIds ["sheik"] or me.id == cousinIds ["vivi"]):
-                        # if mensaje.forward_from.id == cousinIds ["harry"]:
-                            # testing = True
-                        app.send_message(ids["helper"], "El id del que envió los mobs es: "+str(mensaje.from_user.id))
+                        if mensaje.from_user.id == cousinIds ["vivi"]:
+                            return None
+                        # app.send_message(ids["helper"], "El id del que envió los mobs es: "+str(mensaje.from_user.id))
                     else:
                         time.sleep(wait_time)
                     if vago:
