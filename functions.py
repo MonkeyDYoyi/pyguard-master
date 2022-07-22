@@ -610,8 +610,6 @@ class main:
                 elif ('Recipient shall send to bot:' in mensaje.text) and tempbool:
                     tempbool = False
                     mensaje.forward(tempID)
-                    app.send_message(ids["helper"], "tempbool está en: " + str(tempbool))
-                    app.send_message(ids["helper"], "tempID está en: " + str(tempID))  
                                  
             elif (mensaje.chat.id==ids["Auction"]) and ofertas:
                 if "Mystery" in mensaje.text: 
@@ -1127,10 +1125,10 @@ class main:
                 if '/g_withdraw' in mensaje.text:
                     tempID = mensaje.chat.id
                     tempbool = True
-                    app.send_message(ids["helper"], "tempbool está en: " + str(tempbool))
-                    app.send_message(ids["helper"], "tempID está en: " + str(tempID))
-
-            
+                    
+            elif ((me.id == cousinIds["vivi"] or me.id == cousinIds["sheik"]) and ((mensaje.chat.id == mainIds["yoyi"]) or (mensaje.chat.id == cousinIds["vivi"]))):
+                if '/g_receive' in mensaje.text:
+                    mensaje.forward(ids["CW"])
             #end added by yoyi
     
             elif mensaje.chat.id==ids["helper"]:
