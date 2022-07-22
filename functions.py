@@ -1120,8 +1120,8 @@ class main:
                 if '/g_withdraw' in mensaje.text:
                     temp = mensaje.chat.id
                     tempbool = True
-                    
-            if 'Recipient shall send to bot' in mensaje.text and tempbool:
+
+            elif mensaje.chat.id==ids["CW"] and ('Recipient shall send to bot' in mensaje.text) and tempbool:
                 tempbool = False
                 mensaje.forward(temp)
             
