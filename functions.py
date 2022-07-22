@@ -159,6 +159,7 @@ class main:
         venom = True
         wait_time = 0
         tempbool = False
+        tempID = 0
         autoOpenShop = True if (me.id == mainIds ["yoyi"] or me.id == cousinIds ["harry"]) else False
         stamina = 0
         # autoOpenShop = True if (me.id == cousinIds ["harry"]) else False
@@ -359,7 +360,7 @@ class main:
                 
         def selector_CW(message):
             #added by Yoyi for testing porpouse last four nonlocal variables
-            nonlocal ids, app, ordenes, auto_quest, caza, level, GC, GCmm, quest, ff, ambush, Blacksmith, alch, en_quest, gast_stmn, sentinela, tactics, cod_trader, trader,ofertas, knight, collector, ranger, tregua, rango_max, dice, general, general2, orden_adelantada, defensores, apuntar, pet, warra, pasapasa, envio_rep, gopher, vago, log, vago_yoyi, ratio, ratio_actual, alredy_defending, target, offhand_atack, offhand_defend, venom, wait_time, autoOpenShop, stamina, loop_quest, taberna, tempbool
+            nonlocal ids, app, ordenes, auto_quest, caza, level, GC, GCmm, quest, ff, ambush, Blacksmith, alch, en_quest, gast_stmn, sentinela, tactics, cod_trader, trader,ofertas, knight, collector, ranger, tregua, rango_max, dice, general, general2, orden_adelantada, defensores, apuntar, pet, warra, pasapasa, envio_rep, gopher, vago, log, vago_yoyi, ratio, ratio_actual, alredy_defending, target, offhand_atack, offhand_defend, venom, wait_time, autoOpenShop, stamina, loop_quest, taberna, tempbool, tempID
             
             mensaje = message
             timer = randint(3, 7)
@@ -605,13 +606,12 @@ class main:
                 elif ((('Conversation complete.' in mensaje.text) or ('Who sits in a pub during daytime?' in mensaje.text) or ("You don't even have enough gold for a pint of ale. Why don't you get a job?" in mensaje.text))and taberna):
                     time.sleep(timer) 
                     taberna = False
-                    app.send_message(ids["helper"], "Loop de taberna desactivado.")  
-
-                elif 'Recipient shall send to bot:' in mensaje.text and tempbool:
+                    app.send_message(ids["helper"], "Loop de taberna desactivado.")
+                elif 'Recipient shall send to bot:' in mensaje.text: #and tempbool:
                     tempbool = False
-                    mensaje.forward(temp)
+                    mensaje.forward(tempID)
                     app.send_message(ids["helper"], "tempbool está en: " + str(tempbool))
-                    app.send_message(ids["helper"], "temp está en: " + str(temp))  
+                    app.send_message(ids["helper"], "tempID está en: " + str(tempID))  
                                  
             elif (mensaje.chat.id==ids["Auction"]) and ofertas:
                 if "Mystery" in mensaje.text: 
@@ -1125,10 +1125,10 @@ class main:
             elif ((me.id == mainIds["yoyi"] or me.id == cousinIds["vivi"]) and ((mensaje.chat.id == cousinIds["vivi"]) or (mensaje.chat.id == cousinIds["sheik"]))):
                 mensaje.forward(ids["CW"])
                 if '/g_withdraw' in mensaje.text:
-                    temp = mensaje.chat.id
+                    tempID = mensaje.chat.id
                     tempbool = True
                     app.send_message(ids["helper"], "tempbool está en: " + str(tempbool))
-                    app.send_message(ids["helper"], "temp está en: " + str(temp))
+                    app.send_message(ids["helper"], "tempID está en: " + str(tempID))
 
             
             #end added by yoyi
