@@ -90,7 +90,10 @@ class main:
         ids["grup_mm"] = -1001274004593
         ids["GrupBlanco"] = -1001192852225#Coffee Break Guild Chat clean
         ids["Suicide_Squad"] = -1001367858712 #Canal del escuadrón suicida
-        ids["vivi"] = 721073856 
+        ids["vivi"] = 721073856
+        ids["sheik"] = 925069789
+        ids ["yoyi"] = 645258806
+
         try:
             ids.update(CW_ids)
         except:
