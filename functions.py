@@ -607,8 +607,8 @@ class main:
                     time.sleep(timer) 
                     taberna = False
                     app.send_message(ids["helper"], "Loop de taberna desactivado.")
-                elif 'Recipient shall send to bot:' in mensaje.text: # and tempbool:
-                    # tempbool = False
+                elif ('Recipient shall send to bot:' in mensaje.text) and tempbool:
+                    tempbool = False
                     mensaje.forward(tempID)
                     app.send_message(ids["helper"], "tempbool está en: " + str(tempbool))
                     app.send_message(ids["helper"], "tempID está en: " + str(tempID))  
