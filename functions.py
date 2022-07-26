@@ -489,7 +489,7 @@ class main:
                             elif (("🍄Swamp 4min 🔥" in mensaje.text) or ("🍄Swamp 6min 🔥" in mensaje.text)):
                                 # app.send_message(ids["helper"], "Hay quest 🍄Swamp")
                                 quest='🍄Swamp'
-                            elif (("⛰️Mountain Valley 4min 🔥" in mensaje.text) or ("⛰️Mountain Valley 6min 🔥" in mensaje.text)):
+                            elif (("🏔Mountain Valley 4min 🔥" in mensaje.text) or ("🏔Mountain Valley 6min 🔥" in mensaje.text)):
                                 # app.send_message(ids["helper"], "Hay quest ⛰️Valley")
                                 quest='⛰️Valley'
                         mensaje.click(quest)
