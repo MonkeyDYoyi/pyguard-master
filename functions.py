@@ -480,7 +480,14 @@ class main:
                             elif quest == '⛰️Valley':
                                 quest='🌲Forest'
                             elif quest == '🌲🍄⛰️loop_quest':
-                                quest='🌲Forest'          
+                                quest='🌲Forest'
+                        if "🔥" in mensaje:
+                            if "🌲Swamp 6min 🔥" in mensaje:
+                                quest='🌲Swamp'
+                            elif "🍄Swamp 6min 🔥" in mensaje:
+                                quest='🍄Swamp'
+                            elif "⛰️Swamp 6min 🔥" in mensaje:
+                                quest='⛰️Swamp'
                         mensaje.click(quest)
                 elif 'Stamina restored. You are ready for more adventures!' in mensaje.text and gast_stmn:
                     auto_quest=True
