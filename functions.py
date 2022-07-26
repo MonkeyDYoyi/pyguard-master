@@ -482,11 +482,11 @@ class main:
                             elif quest == '🌲🍄⛰️loop_quest':
                                 quest='🌲Forest'
                         if "🔥" in mensaje.text:
-                            if "🌲Forest 6min 🔥" in mensaje.text:
+                            if ("🌲Forest 4min 🔥" in mensaje.text) or ("🌲Forest 5min 🔥" in mensaje.text):
                                 quest='🌲Forest'
-                            elif "🍄Swamp 6min 🔥" in mensaje.text:
+                            elif ("🍄Swamp 5min 🔥" in mensaje.text) or ("🍄Swamp 6min 🔥" in mensaje.text):
                                 quest='🍄Swamp'
-                            elif "⛰️Valley 6min 🔥" in mensaje.text:
+                            elif ("⛰️Valley 5min 🔥" in mensaje.text) or ("⛰️Valley 6min 🔥" in mensaje.text):
                                 quest='⛰️Valley'
                         mensaje.click(quest)
                 elif 'Stamina restored. You are ready for more adventures!' in mensaje.text and gast_stmn:
