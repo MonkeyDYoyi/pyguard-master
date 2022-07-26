@@ -482,15 +482,15 @@ class main:
                             elif quest == '🌲🍄⛰️loop_quest':
                                 quest='🌲Forest'
                         if "🔥" in mensaje.text:
-                            app.send_message(ids["helper"], "Hay perseptive secker")
+                            # app.send_message(ids["helper"], "Hay perseptive secker")
                             if (("🌲Forest 3min 🔥" in mensaje.text) or ("🌲Forest 5min 🔥" in mensaje.text)):
-                                app.send_message(ids["helper"], "Hay quest 🌲Forest")
+                                # app.send_message(ids["helper"], "Hay quest 🌲Forest")
                                 quest='🌲Forest'
                             elif (("🍄Swamp 4min 🔥" in mensaje.text) or ("🍄Swamp 6min 🔥" in mensaje.text)):
-                                app.send_message(ids["helper"], "Hay quest 🍄Swamp")
+                                # app.send_message(ids["helper"], "Hay quest 🍄Swamp")
                                 quest='🍄Swamp'
                             elif (("⛰️Valley 4min 🔥" in mensaje.text) or ("⛰️Valley 6min 🔥" in mensaje.text)):
-                                app.send_message(ids["helper"], "Hay quest ⛰️Valley")
+                                # app.send_message(ids["helper"], "Hay quest ⛰️Valley")
                                 quest='⛰️Valley'
                         mensaje.click(quest)
                 elif 'Stamina restored. You are ready for more adventures!' in mensaje.text and gast_stmn:
