@@ -495,6 +495,10 @@ class main:
                         mensaje.click(quest)
                 elif 'Stamina restored. You are ready for more adventures!' in mensaje.text and gast_stmn:
                     auto_quest=True
+                    loop_quest = True
+                    app.send_message(ids["helper"], "Autoquest activado")
+                    quest='🌲🍄⛰️loop_quest'
+                    app.send_message(ids["helper"], "Información de quest actualizada: "+quest)
                     time.sleep(timer)
                     app.send_message(ids["CW"], '🗺Quests')
                 elif (re.search("🏅Level: ([0-9]+)", mensaje.text)) and ('Battle of the seven castles in' in mensaje.text):
