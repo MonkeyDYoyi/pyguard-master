@@ -93,7 +93,7 @@ class main:
         ids["vivi"] = 721073856
         ids["sheik"] = 925069789
         ids["yoyi"] = 645258806
-        ids["EVENT"] = 1744603110 #EVENT GROUP 
+        ids["EVENT"] = -1001744603110 #EVENT GROUP 
 
         try:
             ids.update(CW_ids)
