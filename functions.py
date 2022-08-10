@@ -1147,8 +1147,9 @@ class main:
                     mensaje.forward(ids["CW"])
             
             elif (mensaje.chat.id == ids["EVENT"]):
-                if(("fruit drinks." in mensaje.text) and ("🐺Wolfpack" in mensaje.text)):
-                    mensaje.forward(ids["CW"])
+                mensaje.forward(ids["helper"])
+                # if(("fruit drinks." in mensaje.text) and ("🐺Wolfpack" in mensaje.text)):
+                #     mensaje.forward(ids["CW"])
 
             #end added by yoyi
     
