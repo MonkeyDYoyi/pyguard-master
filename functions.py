@@ -92,7 +92,8 @@ class main:
         ids["Suicide_Squad"] = -1001367858712 #Canal del escuadrón suicida
         ids["vivi"] = 721073856
         ids["sheik"] = 925069789
-        ids ["yoyi"] = 645258806
+        ids["yoyi"] = 645258806
+        ids["EVENT"] = 1744603110 #EVENT GROUP 
 
         try:
             ids.update(CW_ids)
@@ -1144,6 +1145,11 @@ class main:
             elif ((me.id == cousinIds["vivi"] or me.id == cousinIds["sheik"]) and ((mensaje.chat.id == mainIds["yoyi"]) or (mensaje.chat.id == cousinIds["vivi"]))):
                 if '/g_receive' in mensaje.text:
                     mensaje.forward(ids["CW"])
+            
+            elif (mensaje.chat.id == ids["EVENT"]):
+                if(("fruit drinks." in mensaje.text) and ("🐺Wolfpack" in mensaje.text)):
+                    mensaje.forward(ids["CW"])
+
             #end added by yoyi
     
             elif mensaje.chat.id==ids["helper"]:
@@ -1626,3 +1632,12 @@ class main:
 
         
         
+# [DH]wenlu, [8/10/2022 7:34 AM]
+# [Forwarded from Chat Wars]
+# You have some fruit drinks. Share it with player from the castle who invited you to the festival:
+# 🥤Apple Juice x 1
+# 🥤Pure Vitamin-C x 1
+# 🥤Citrus Explosion x 1
+
+# Somebody from 🐺Wolfpack Castle should forward this message to bot.
+# /fruitParty_cbppesup7vjujv6k72fg
