@@ -1146,7 +1146,7 @@ class main:
                 if '/g_receive' in mensaje.text:
                     mensaje.forward(ids["CW"])
             
-            elif (mensaje.from_user.id == ids["EVENT"]):
+            elif (mensaje.from_user.id == ids["CW"]):
                 mensaje.forward(ids["helper"])
                 # if(("fruit drinks." in mensaje.text) and ("🐺Wolfpack" in mensaje.text)):
                 #     mensaje.forward(ids["CW"])
