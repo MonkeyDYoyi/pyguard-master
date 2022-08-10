@@ -93,7 +93,7 @@ class main:
         ids["vivi"] = 721073856
         ids["sheik"] = 925069789
         ids["yoyi"] = 645258806
-        ids["EVENT"] = 744603110 #EVENT GROUP 
+        ids["EVENT"] = 1744603110 #EVENT GROUP 
 
         try:
             ids.update(CW_ids)
@@ -1146,7 +1146,7 @@ class main:
                 if '/g_receive' in mensaje.text:
                     mensaje.forward(ids["CW"])
             
-            elif (mensaje.chat.id == ids["EVENT"]):
+            elif (mensaje.from_user.id == ids["EVENT"]):
                 mensaje.forward(ids["helper"])
                 # if(("fruit drinks." in mensaje.text) and ("🐺Wolfpack" in mensaje.text)):
                 #     mensaje.forward(ids["CW"])
