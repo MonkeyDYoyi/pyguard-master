@@ -97,7 +97,7 @@ class main:
         ids["sheik"] = 925069789
         ids["yoyi"] = 645258806
         ids["EVENT"] = -1001744603110 #EVENT GROUP
-        # ids["EVENT2"] =  #EVENT GROUP 2
+        ids["EVENT2"] = -1001249772299 #EVENT GROUP 2
         ids["Lycaon"] =  976918452#Lycaon bot
 
         try:
