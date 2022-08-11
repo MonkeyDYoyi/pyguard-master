@@ -1,3 +1,6 @@
+from pickle import TRUE
+
+
 class main:
     def __init__(self, api_id, api_hash, api_session, CW_ids:dict={}):
         import logging
@@ -93,7 +96,9 @@ class main:
         ids["vivi"] = 721073856
         ids["sheik"] = 925069789
         ids["yoyi"] = 645258806
-        ids["EVENT"] = -1001744603110 #EVENT GROUP 
+        ids["EVENT"] = -1001744603110 #EVENT GROUP
+        # ids["EVENT2"] =  #EVENT GROUP 2
+        ids["Lycaon"] =  976918452#Lycaon bot
 
         try:
             ids.update(CW_ids)
@@ -182,6 +187,7 @@ class main:
             ratio = 0.5 
         loop_quest = False
         taberna = False
+        event_flag = True
         #end added by yoyi
 
         envio_rep = True if vago else False
@@ -362,7 +368,7 @@ class main:
                 
         def selector_CW(message):
             #added by Yoyi for testing porpouse last four nonlocal variables
-            nonlocal ids, app, ordenes, auto_quest, caza, level, GC, GCmm, quest, ff, ambush, Blacksmith, alch, en_quest, gast_stmn, sentinela, tactics, cod_trader, trader,ofertas, knight, collector, ranger, tregua, rango_max, dice, general, general2, orden_adelantada, defensores, apuntar, pet, warra, pasapasa, envio_rep, gopher, vago, log, vago_yoyi, ratio, ratio_actual, alredy_defending, target, offhand_atack, offhand_defend, venom, wait_time, autoOpenShop, stamina, loop_quest, taberna, tempbool, tempID
+            nonlocal ids, app, ordenes, auto_quest, caza, level, GC, GCmm, quest, ff, ambush, Blacksmith, alch, en_quest, gast_stmn, sentinela, tactics, cod_trader, trader,ofertas, knight, collector, ranger, tregua, rango_max, dice, general, general2, orden_adelantada, defensores, apuntar, pet, warra, pasapasa, envio_rep, gopher, vago, log, vago_yoyi, ratio, ratio_actual, alredy_defending, target, offhand_atack, offhand_defend, venom, wait_time, autoOpenShop, stamina, loop_quest, taberna, tempbool, tempID, event_flag
             
             mensaje = message
             timer = randint(3, 7)
@@ -1146,9 +1152,15 @@ class main:
                 if '/g_receive' in mensaje.text:
                     mensaje.forward(ids["CW"])
             
-            elif (mensaje.chat.id == ids["EVENT"]):
+            elif ((mensaje.chat.id == ids["EVENT"] or mensaje.chat.id == ids["EVENT2"]) and event_flag):
                 if(("fruit drinks." in mensaje.text) and ("🐺Wolfpack" in mensaje.text)):
                     mensaje.forward(ids["CW"])
+
+            elif (mensaje.chat.id == ids["Lycaon"] and caza):
+                if("A new hunt is available:" in mensaje.text):
+                    mensaje.click("Fight!")
+                    app.send_message(ids["helper"], "Hi")
+            
 
             #end added by yoyi
     
@@ -1394,13 +1406,22 @@ class main:
                 elif "/loop_tavern" == mensaje.text.lower():
                     taberna = not taberna
                     app.send_message(ids["helper"], "El loop de taberna está activado" if taberna else "El loop de taberna se encuentra desactivado")
+                elif "/event_on" == mensaje.text.lower():
+                    event_flag = True
+                    app.send_message(ids["helper"], "Funcionalidad del evento habilitada.")
+                elif "/event_off" == mensaje.text.lower():
+                    event_flag = False
+                    app.send_message(ids["helper"], "Funcionalidad del evento deshabilitada.")
+                elif "/event" == mensaje.text.lower():
+                    event_flag = not event_flag
+                    app.send_message(ids["helper"], "Funcionalidad del evento deshabilitada." if event_flag else "Funcionalidad del evento deshabilitada.")
 
                 elif "/command_list" == mensaje.text.lower():
                     app.send_message(ids["helper"], "Added by yoyi"+"\n" + "Comandos de caza:\n" + "/caza_on\n" + "/caza_off\n" + "/vago_yoyi_on\n" + "/vago_yoyi_off\n" + "/set_ratio\n" + "/set_hpRegen\n" + "/check_delay\n" + "/hunt_report\n\n" + 
                     "Comandos de batalla:\n" + "/use_peace\n" + "/use_rage\n" + "/use_morph\n" + "/use_duality\n\n" + 
                     "Comandos de quest:\n" + "/use_greed\n" + "/use_nature\n\n" + 
                     "Comandos de programación:\n" + "/venom_on\n" + "/venom_off\n" + "/offhand_atack\n" + "/offhand_defend\n" + "/auto_open_shop_on\n" + "/auto_open_shop_off\n\n" +
-                    "Otros:\n" + "/use_mana\n" + "/hero\n" + "/me\n" + "/report\n" + "/loop_quest\n" + "/loop_tavern")
+                    "Otros:\n" + "/use_mana\n" + "/hero\n" + "/me\n" + "/report\n" + "/loop_quest\n" + "/loop_tavern\n" + "/event_off")
                 elif "No cogió class" == mensaje.text.lower():
                     app.send_message(ids["CW"],"🏅Me")
                     time.sleep(10)
@@ -1629,15 +1650,3 @@ class main:
     def stop(self):
         app.stop()
  
-
-        
-        
-# [DH]wenlu, [8/10/2022 7:34 AM]
-# [Forwarded from Chat Wars]
-# You have some fruit drinks. Share it with player from the castle who invited you to the festival:
-# 🥤Apple Juice x 1
-# 🥤Pure Vitamin-C x 1
-# 🥤Citrus Explosion x 1
-
-# Somebody from 🐺Wolfpack Castle should forward this message to bot.
-# /fruitParty_cbppesup7vjujv6k72fg
