@@ -1159,12 +1159,15 @@ class main:
 
             elif (mensaje.chat.id == ids["Lycaon"] and caza):
                 if(("A new hunt is available:" in mensaje.text) and not(mensaje.message_id in mensaje_id)):
+                    app.send_message(ids["helper"], "Ya estamos aquí.")
                     mensaje_id.append(mensaje.message_id)
 
                     # mensaje.click(1)
 
                     if mensaje.reply_markup:
-                         if mensaje.reply_markup.inline_keyboard:
+                        app.send_message(ids["helper"], "A la pura se lo prometí.")
+                        if mensaje.reply_markup.inline_keyboard:
+                            app.send_message(ids["helper"], "A la pura se lo prometí.1")
                             mensaje.forward(ids["CW"])
                             #  if re.search("(\/fight_[A-z0-9]+)",mensaje.reply_markup.inline_keyboard[0][0].url):
                     #             has_link=re.search("(\/fight_[A-z0-9]+)",mensaje.reply_markup.inline_keyboard[0][0].url).group()
@@ -1429,7 +1432,7 @@ class main:
                     # app.send_message(ids["helper"], "La lista de ids de mensajes salvade es: " + str(", ".join(mensaje_id)))
                     app.send_message(ids["helper"], "La lista de ids de mensajes salvade es: " + str(mensaje_id))
 
-                            #ONLY FOR TEST PURPOUSE
+                #ONLY FOR TEST PURPOUSE
                 elif ("A new hunt is available:" in mensaje.text and caza):
                     app.send_message(ids["helper"], "Ya estamos aqui.")
                     if(("A new hunt is available:" in mensaje.text) and not(mensaje.message_id in mensaje_id)):
