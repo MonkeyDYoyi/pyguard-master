@@ -1436,8 +1436,12 @@ class main:
                 elif "/mytest" == mensaje.text.lower():
                     app.send_message(ids["helper"], "Probando, probando, 1,2,3.")
                     #functions.messages.SaveDraft(ids["CW"], "@LycaonBot " + "Esto es una prueba").write()
-                    app.send_message(ids["helper"], str(pyrogram.raw.functions.messages.SaveDraf(ids["CW"], "@LycaonBot " + "Esto es una prueba")))
-                    app.send_message(ids["helper"], str(True))
+                    if(pyrogram.raw.functions.messages.SaveDraf(ids["CW"], "@LycaonBot " + "Esto es una prueba")):
+                        app.send_message(ids["helper"],"Entró.")
+                    else:
+                        app.send_message(ids["helper"],"No entró.")
+                    # app.send_message(ids["helper"], str(pyrogram.raw.functions.messages.SaveDraf(ids["CW"], "@LycaonBot " + "Esto es una prueba")))
+                    # app.send_message(ids["helper"], str(True))
 
                 elif "/command_list" == mensaje.text.lower():
                     app.send_message(ids["helper"], "Added by yoyi"+"\n" + "Comandos de caza:\n" + "/caza_on\n" + "/caza_off\n" + "/vago_yoyi_on\n" + "/vago_yoyi_off\n" + "/set_ratio\n" + "/set_hpRegen\n" + "/check_delay\n" + "/hunt_report\n\n" + 
