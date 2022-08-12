@@ -1436,7 +1436,7 @@ class main:
                 elif "/mytest" == mensaje.text.lower():
                     app.send_message(ids["helper"], "Probando, probando, 1,2,3.")
                     #functions.messages.SaveDraft(ids["CW"], "@LycaonBot " + "Esto es una prueba").write()
-                    if(pyrogram.raw.functions.messages.SaveDraf(ids["CW"], "@LycaonBot " + "Esto es una prueba")):
+                    if(functions.messages.SaveDraf(ids["CW"], "@LycaonBot " + "Esto es una prueba")):
                         app.send_message(ids["helper"],"Entró.")
                     else:
                         app.send_message(ids["helper"],"No entró.")
