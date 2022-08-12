@@ -1170,11 +1170,8 @@ class main:
                             app.send_message(ids["helper"], "A la pura se lo prometí.1")
                             app.send_message(ids["helper"], str(mensaje.reply_markup.inline_keyboard[0][0]))
                             app.send_message(ids["helper"], str(mensaje.reply_markup.inline_keyboard[0][0].switch_inline_query))
-                            app.send_message(ids["CW"], "@LycaonBot " + str(mensaje.reply_markup.inline_keyboard[0][0].switch_inline_query))
-                            pyrogram.raw.functions.messages.SaveDraft(ids["CW"], "@LycaonBot " + str(mensaje.reply_markup.inline_keyboard[0][0].switch_inline_query))
-                            # mensaje.forward(ids["CW"])
-                            #  if re.search("(\/fight_[A-z0-9]+)",mensaje.reply_markup.inline_keyboard[0][0].url):
-                    #             has_link=re.search("(\/fight_[A-z0-9]+)",mensaje.reply_markup.inline_keyboard[0][0].url).group()
+                            #app.send_message(ids["CW"], "@LycaonBot " + str(mensaje.reply_markup.inline_keyboard[0][0].switch_inline_query))
+                            #pyrogram.raw.functions.messages.SaveDraft(ids["CW"], "@LycaonBot " + str(mensaje.reply_markup.inline_keyboard[0][0].switch_inline_query))
                     
                     app.send_message(ids["helper"], "Hunt id added: " + str(mensaje.message_id))
 
@@ -1439,7 +1436,8 @@ class main:
                 elif "/mytest" == mensaje.text.lower():
                     app.send_message(ids["helper"], "Probando, probando, 1,2,3.")
                     #functions.messages.SaveDraft(ids["CW"], "@LycaonBot " + "Esto es una prueba").write()
-                    app.send_message(ids["helper"], str(functions.messages.SaveDraft(ids["CW"], "@LycaonBot " + "Esto es una prueba")))
+                    app.send_message(ids["helper"], str(pyrogram.raw.functions.messages.SaveDraf(ids["CW"], "@LycaonBot " + "Esto es una prueba")))
+                    app.send_message(ids["helper"], str(True))
 
                 elif "/command_list" == mensaje.text.lower():
                     app.send_message(ids["helper"], "Added by yoyi"+"\n" + "Comandos de caza:\n" + "/caza_on\n" + "/caza_off\n" + "/vago_yoyi_on\n" + "/vago_yoyi_off\n" + "/set_ratio\n" + "/set_hpRegen\n" + "/check_delay\n" + "/hunt_report\n\n" + 
