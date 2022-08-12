@@ -1160,9 +1160,22 @@ class main:
             elif (mensaje.chat.id == ids["Lycaon"] and caza):
                 if(("A new hunt is available:" in mensaje.text) and not(mensaje.message_id in mensaje_id)):
                     mensaje_id.append(mensaje.message_id)
-                    mensaje.click(1)
+
+                    # mensaje.click(1)
+
+                    if mensaje.reply_markup:
+                         if mensaje.reply_markup.inline_keyboard:
+                            mensaje.forward(ids["CW"])
+                            #  if re.search("(\/fight_[A-z0-9]+)",mensaje.reply_markup.inline_keyboard[0][0].url):
+                    #             has_link=re.search("(\/fight_[A-z0-9]+)",mensaje.reply_markup.inline_keyboard[0][0].url).group()
+                    
                     app.send_message(ids["helper"], "Hunt id added: " + str(mensaje.message_id))
             
+            #ONLY FOR TEST PURPOUSE
+            elif (mensaje.chat.id == ids["helper"] and caza):
+                app.send_message(ids["helper"], "Ya estamos aqui.")
+                if(("A new hunt is available:" in mensaje.text) and not(mensaje.message_id in mensaje_id)):
+                    mensaje_id.append(mensaje.message_id)
 
             #end added by yoyi
     
@@ -1417,6 +1430,10 @@ class main:
                 elif "/event" == mensaje.text.lower():
                     event_flag = not event_flag
                     app.send_message(ids["helper"], "Funcionalidad del evento deshabilitada." if event_flag else "Funcionalidad del evento deshabilitada.")
+
+                elif "/print" == mensaje.text.lower():
+                    app.send_message(ids["helper"], "La lista de ids de mensajes salvade es: " + str(", ".join(mensaje_id)))
+                
 
                 elif "/command_list" == mensaje.text.lower():
                     app.send_message(ids["helper"], "Added by yoyi"+"\n" + "Comandos de caza:\n" + "/caza_on\n" + "/caza_off\n" + "/vago_yoyi_on\n" + "/vago_yoyi_off\n" + "/set_ratio\n" + "/set_hpRegen\n" + "/check_delay\n" + "/hunt_report\n\n" + 
