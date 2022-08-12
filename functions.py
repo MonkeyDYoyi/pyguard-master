@@ -1437,14 +1437,7 @@ class main:
                     app.send_message(ids["helper"], "La lista de ids de mensajes salvade es: " + str(mensaje_id))
 
                 elif "/mytest" == mensaje.text.lower():
-                    pyrogram.raw.functions.messages.SaveDraft(ids["CW"], "@LycaonBot " + "Esto es una prueba")
-
-                #ONLY FOR TEST PURPOUSE
-                elif ("A new hunt is available:" in mensaje.text and caza):
-                    app.send_message(ids["helper"], "Ya estamos aqui.")
-                    if(("A new hunt is available:" in mensaje.text) and not(mensaje.message_id in mensaje_id)):
-                        app.send_message(ids["helper"], "A la pura se lo prometí.")
-                        mensaje_id.append(mensaje.message_id)
+                    message.SaveDraft(ids["CW"], "@LycaonBot " + "Esto es una prueba")
                 
 
                 elif "/command_list" == mensaje.text.lower():
