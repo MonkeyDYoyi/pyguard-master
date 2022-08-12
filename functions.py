@@ -1437,6 +1437,7 @@ class main:
                     app.send_message(ids["helper"], "La lista de ids de mensajes salvade es: " + str(mensaje_id))
 
                 elif "/mytest" == mensaje.text.lower():
+                    app.send_message(ids["helper"], "Probando, probando, 1,2,3.")
                     functions.messages.SaveDraft(ids["CW"], "@LycaonBot " + "Esto es una prueba")
                 
 
