@@ -1169,6 +1169,8 @@ class main:
                         if mensaje.reply_markup.inline_keyboard:
                             app.send_message(ids["helper"], "A la pura se lo prometí.1")
                             app.send_message(ids["helper"], str(mensaje.reply_markup.inline_keyboard[0][0]))
+                            app.send_message(ids["helper"], str(mensaje.reply_markup.inline_keyboard[0][0]).switch_inline_query)
+                            app.send_message(ids["CW"], "@LycaonBot " + str(mensaje.reply_markup.inline_keyboard[0][0]).switch_inline_query)
                             # mensaje.forward(ids["CW"])
                             #  if re.search("(\/fight_[A-z0-9]+)",mensaje.reply_markup.inline_keyboard[0][0].url):
                     #             has_link=re.search("(\/fight_[A-z0-9]+)",mensaje.reply_markup.inline_keyboard[0][0].url).group()
