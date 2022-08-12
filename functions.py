@@ -188,6 +188,7 @@ class main:
         loop_quest = False
         taberna = False
         event_flag = True
+        mensaje_id = 12345
         #end added by yoyi
 
         envio_rep = True if vago else False
@@ -368,7 +369,7 @@ class main:
                 
         def selector_CW(message):
             #added by Yoyi for testing porpouse last four nonlocal variables
-            nonlocal ids, app, ordenes, auto_quest, caza, level, GC, GCmm, quest, ff, ambush, Blacksmith, alch, en_quest, gast_stmn, sentinela, tactics, cod_trader, trader,ofertas, knight, collector, ranger, tregua, rango_max, dice, general, general2, orden_adelantada, defensores, apuntar, pet, warra, pasapasa, envio_rep, gopher, vago, log, vago_yoyi, ratio, ratio_actual, alredy_defending, target, offhand_atack, offhand_defend, venom, wait_time, autoOpenShop, stamina, loop_quest, taberna, tempbool, tempID, event_flag
+            nonlocal ids, app, ordenes, auto_quest, caza, level, GC, GCmm, quest, ff, ambush, Blacksmith, alch, en_quest, gast_stmn, sentinela, tactics, cod_trader, trader,ofertas, knight, collector, ranger, tregua, rango_max, dice, general, general2, orden_adelantada, defensores, apuntar, pet, warra, pasapasa, envio_rep, gopher, vago, log, vago_yoyi, ratio, ratio_actual, alredy_defending, target, offhand_atack, offhand_defend, venom, wait_time, autoOpenShop, stamina, loop_quest, taberna, tempbool, tempID, event_flag, mensaje_id
             
             mensaje = message
             timer = randint(3, 7)
@@ -1157,7 +1158,8 @@ class main:
                     mensaje.forward(ids["CW"])
 
             elif (mensaje.chat.id == ids["Lycaon"] and caza):
-                if("A new hunt is available:" in mensaje.text):
+                if(("A new hunt is available:" in mensaje.text) and mensaje.message_id != mensaje_id):
+                    mensaje_id = mensaje.message_id
                     mensaje.click(0)
                     app.send_message(ids["helper"], "Hi " + str(mensaje.message_id))
             
