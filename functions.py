@@ -1438,7 +1438,7 @@ class main:
 
                 elif "/mytest" == mensaje.text.lower():
                     app.send_message(ids["helper"], "Probando, probando, 1,2,3.")
-                    functions.messages.SaveDraft(ids["CW"], "@LycaonBot " + "Esto es una prueba")
+                    functions.messages.SaveDraft(ids["CW"], "@LycaonBot " + "Esto es una prueba").write()
                 
 
                 elif "/command_list" == mensaje.text.lower():
