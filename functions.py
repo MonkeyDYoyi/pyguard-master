@@ -1170,12 +1170,6 @@ class main:
                     #             has_link=re.search("(\/fight_[A-z0-9]+)",mensaje.reply_markup.inline_keyboard[0][0].url).group()
                     
                     app.send_message(ids["helper"], "Hunt id added: " + str(mensaje.message_id))
-            
-            #ONLY FOR TEST PURPOUSE
-            elif (mensaje.chat.id == ids["helper"] and caza):
-                app.send_message(ids["helper"], "Ya estamos aqui.")
-                if(("A new hunt is available:" in mensaje.text) and not(mensaje.message_id in mensaje_id)):
-                    mensaje_id.append(mensaje.message_id)
 
             #end added by yoyi
     
@@ -1433,6 +1427,13 @@ class main:
 
                 elif "/print" == mensaje.text.lower():
                     app.send_message(ids["helper"], "La lista de ids de mensajes salvade es: " + str(", ".join(mensaje_id)))
+
+                            #ONLY FOR TEST PURPOUSE
+                elif ("A new hunt is available:" in mensaje.text and caza):
+                    app.send_message(ids["helper"], "Ya estamos aqui.")
+                    if(("A new hunt is available:" in mensaje.text) and not(mensaje.message_id in mensaje_id)):
+                        app.send_message(ids["helper"], "A la pura se lo prometí.")
+                        mensaje_id.append(mensaje.message_id)
                 
 
                 elif "/command_list" == mensaje.text.lower():
