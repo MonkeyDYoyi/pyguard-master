@@ -1426,7 +1426,8 @@ class main:
                     app.send_message(ids["helper"], "Funcionalidad del evento deshabilitada." if event_flag else "Funcionalidad del evento deshabilitada.")
 
                 elif "/print" == mensaje.text.lower():
-                    app.send_message(ids["helper"], "La lista de ids de mensajes salvade es: " + str(", ".join(mensaje_id)))
+                    # app.send_message(ids["helper"], "La lista de ids de mensajes salvade es: " + str(", ".join(mensaje_id)))
+                    app.send_message(ids["helper"], "La lista de ids de mensajes salvade es: " + str(mensaje_id))
 
                             #ONLY FOR TEST PURPOUSE
                 elif ("A new hunt is available:" in mensaje.text and caza):
