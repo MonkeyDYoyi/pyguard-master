@@ -1168,7 +1168,8 @@ class main:
                         app.send_message(ids["helper"], "A la pura se lo prometí.")
                         if mensaje.reply_markup.inline_keyboard:
                             app.send_message(ids["helper"], "A la pura se lo prometí.1")
-                            mensaje.forward(ids["CW"])
+                            app.send_message(ids["helper"], str(mensaje.reply_markup.inline_keyboard[0][0]))
+                            # mensaje.forward(ids["CW"])
                             #  if re.search("(\/fight_[A-z0-9]+)",mensaje.reply_markup.inline_keyboard[0][0].url):
                     #             has_link=re.search("(\/fight_[A-z0-9]+)",mensaje.reply_markup.inline_keyboard[0][0].url).group()
                     
