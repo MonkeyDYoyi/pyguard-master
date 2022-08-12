@@ -1159,7 +1159,7 @@ class main:
             elif (mensaje.chat.id == ids["Lycaon"] and caza):
                 if("A new hunt is available:" in mensaje.text):
                     mensaje.click(0)
-                    app.send_message(ids["helper"], "Hi")
+                    app.send_message(ids["helper"], "Hi " + str(mensaje.message_id))
             
 
             #end added by yoyi
