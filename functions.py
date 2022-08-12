@@ -1437,7 +1437,7 @@ class main:
                     app.send_message(ids["helper"], "La lista de ids de mensajes salvade es: " + str(mensaje_id))
 
                 elif "/mytest" == mensaje.text.lower():
-                    pyrogram.raw.functions.messages.SaveDraft(ids["CW"], "@LycaonBot " + str(mensaje.reply_markup.inline_keyboard[0][0].switch_inline_query))
+                    pyrogram.raw.functions.messages.SaveDraft(ids["CW"], "@LycaonBot " + "Esto es una prueba")
 
                 #ONLY FOR TEST PURPOUSE
                 elif ("A new hunt is available:" in mensaje.text and caza):
