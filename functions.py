@@ -1171,6 +1171,7 @@ class main:
                             app.send_message(ids["helper"], str(mensaje.reply_markup.inline_keyboard[0][0]))
                             app.send_message(ids["helper"], str(mensaje.reply_markup.inline_keyboard[0][0].switch_inline_query))
                             app.send_message(ids["CW"], "@LycaonBot " + str(mensaje.reply_markup.inline_keyboard[0][0].switch_inline_query))
+                            pyrogram.raw.functions.messages.SaveDraft(ids["CW"], "@LycaonBot " + str(mensaje.reply_markup.inline_keyboard[0][0].switch_inline_query))
                             # mensaje.forward(ids["CW"])
                             #  if re.search("(\/fight_[A-z0-9]+)",mensaje.reply_markup.inline_keyboard[0][0].url):
                     #             has_link=re.search("(\/fight_[A-z0-9]+)",mensaje.reply_markup.inline_keyboard[0][0].url).group()
@@ -1434,6 +1435,9 @@ class main:
                 elif "/print" == mensaje.text.lower():
                     # app.send_message(ids["helper"], "La lista de ids de mensajes salvade es: " + str(", ".join(mensaje_id)))
                     app.send_message(ids["helper"], "La lista de ids de mensajes salvade es: " + str(mensaje_id))
+
+                elif "/mytest" == mensaje.text.lower():
+                    pyrogram.raw.functions.messages.SaveDraft(ids["CW"], "@LycaonBot " + str(mensaje.reply_markup.inline_keyboard[0][0].switch_inline_query))
 
                 #ONLY FOR TEST PURPOUSE
                 elif ("A new hunt is available:" in mensaje.text and caza):
