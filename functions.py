@@ -188,7 +188,7 @@ class main:
         loop_quest = False
         taberna = False
         event_flag = True
-        mensaje_id = 12345
+        mensaje_id = [12345]
         #end added by yoyi
 
         envio_rep = True if vago else False
@@ -1158,10 +1158,10 @@ class main:
                     mensaje.forward(ids["CW"])
 
             elif (mensaje.chat.id == ids["Lycaon"] and caza):
-                if(("A new hunt is available:" in mensaje.text) and mensaje.message_id != mensaje_id):
-                    mensaje_id = mensaje.message_id
-                    mensaje.click(0)
-                    app.send_message(ids["helper"], "Hi " + str(mensaje.message_id))
+                if(("A new hunt is available:" in mensaje.text) and not(mensaje.message_id in mensaje_id)):
+                    mensaje_id.append(mensaje.message_id)
+                    mensaje.click(1)
+                    app.send_message(ids["helper"], "Hunt id added: " + str(mensaje.message_id))
             
 
             #end added by yoyi
