@@ -166,7 +166,8 @@ class main:
         wait_time = 0
         tempbool = False
         tempID = 0
-        autoOpenShop = True if (me.id == mainIds ["yoyi"] or me.id == cousinIds ["harry"]) else False
+        # autoOpenShop = True if (me.id == mainIds ["yoyi"] or me.id == cousinIds ["harry"]) else False
+        autoOpenShop = True if (me.id == cousinIds ["harry"]) else False
         stamina = 0
         # autoOpenShop = True if (me.id == cousinIds ["harry"]) else False
 
@@ -1159,19 +1160,20 @@ class main:
 
             elif (mensaje.chat.id == ids["Lycaon"] and caza):
                 if(("A new hunt is available:" in mensaje.text) and not(mensaje.message_id in mensaje_id)):
-                    app.send_message(ids["helper"], "Ya estamos aquí.")
+                    # app.send_message(ids["helper"], "Ya estamos aquí.")
                     mensaje_id.append(mensaje.message_id)
 
                     # mensaje.click(1)
 
                     if mensaje.reply_markup:
-                        app.send_message(ids["helper"], "A la pura se lo prometí.")
+                        # app.send_message(ids["helper"], "A la pura se lo prometí.")
                         if mensaje.reply_markup.inline_keyboard:
-                            app.send_message(ids["helper"], "A la pura se lo prometí.1")
-                            app.send_message(ids["helper"], str(mensaje.reply_markup.inline_keyboard[0][0]))
-                            app.send_message(ids["helper"], str(mensaje.reply_markup.inline_keyboard[0][0].switch_inline_query))
-                            #app.send_message(ids["CW"], "@LycaonBot " + str(mensaje.reply_markup.inline_keyboard[0][0].switch_inline_query))
-                            #pyrogram.raw.functions.messages.SaveDraft(ids["CW"], "@LycaonBot " + str(mensaje.reply_markup.inline_keyboard[0][0].switch_inline_query))
+                            # app.send_message(ids["helper"], "A la pura se lo prometí.1")
+                            # app.send_message(ids["helper"], str(mensaje.reply_markup.inline_keyboard[0][0]))
+                            # app.send_message(ids["helper"], str(mensaje.reply_markup.inline_keyboard[0][0].switch_inline_query))
+                            # app.send_message(ids["CW"], "@LycaonBot " + str(mensaje.reply_markup.inline_keyboard[0][0].switch_inline_query))
+                            pyrogram.raw.functions.messages.SaveDraft(ids["CW"], "@LycaonBot " + str(mensaje.reply_markup.inline_keyboard[0][0].switch_inline_query))
+                            # mensaje.forward(ids["CW"])
                     
                     app.send_message(ids["helper"], "Hunt id added: " + str(mensaje.message_id))
 
