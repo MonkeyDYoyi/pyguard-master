@@ -11,7 +11,7 @@ class main:
         self.api_session = api_session
 
         # from pyrogram import Client, MessageHandler, Filters
-        from pyrogram import Client#, Filters, MessageHandler
+        from pyrogram import Client, Message, User#, Filters, MessageHandler
         try:
             from pyrogram import MessageHandler                  
         except ImportError:
@@ -197,7 +197,7 @@ class main:
 
         import time
         #added by Yoyi for testing porpouse
-        def get_target(mensaje):
+        def get_target(mensaje: Message):
             nonlocal target
             # if re.search("⚔️Attacking 🐺", mensaje.text):
             #     target = 'wolf'
@@ -246,7 +246,7 @@ class main:
 
         #end added by Yoyi
 
-        def cazar(mensaje):
+        def cazar(mensaje: Message):
             nonlocal level, ids, rango_max
             has_link = False
             if mensaje.edit_date: return None
@@ -282,7 +282,7 @@ class main:
                     else:
                         mensaje.forward(ids["CW"])
 
-        def programar_ataque(mensaje, timer:int=randint(3, 7)):
+        def programar_ataque(mensaje: Message, timer:int=randint(3, 7)):
             nonlocal app, ids
             try:
                 orden_list=re.search("(⚔Attack) ([^\w\d\s]+)(\w+)",mensaje)
@@ -300,7 +300,7 @@ class main:
                 log.warning("Alerta: El ataque no ha sido programado.")
 
 
-        def orden_adelant(mensaje, timer:int=randint(3, 7)):
+        def orden_adelant(mensaje: Message, timer:int=randint(3, 7)):
             nonlocal app, ids
             try:
                 orden_list=re.search("(⚔Attack) ([^\w\d\s]+)(\w+)",mensaje)   
@@ -368,7 +368,7 @@ class main:
                 app.send_message(ids["CW"], "🛁Clean")
                 time.sleep(7200+timer)
                 
-        def selector_CW(message):
+        def selector_CW(message: Message):
             #added by Yoyi for testing porpouse last four nonlocal variables
             nonlocal ids, app, ordenes, auto_quest, caza, level, GC, GCmm, quest, ff, ambush, Blacksmith, alch, en_quest, gast_stmn, sentinela, tactics, cod_trader, trader,ofertas, knight, collector, ranger, tregua, rango_max, dice, general, general2, orden_adelantada, defensores, apuntar, pet, warra, pasapasa, envio_rep, gopher, vago, log, vago_yoyi, ratio, ratio_actual, alredy_defending, target, offhand_atack, offhand_defend, venom, wait_time, autoOpenShop, stamina, loop_quest, taberna, tempbool, tempID, event_flag, mensaje_id
             
@@ -635,7 +635,15 @@ class main:
                 elif ('Recipient shall send to bot:' in mensaje.text) and tempbool:
                     tempbool = False
                     mensaje.forward(tempID)
-                                 
+                elif (mensaje.from_user.id == ids["Lycaon"]):
+                    app.send_message(ids["helper"], "Ya estamos aquí.")
+                    if mensaje.reply_markup:
+                        app.send_message(ids["helper"], "A la pura se lo prometí.")
+                        if mensaje.reply_markup.ForceReply:
+                            app.send_message(ids["helper"], "A la pura se lo prometí 2.")
+                            app.send_message(ids["helper"],str(mensaje.reply_markup.ForceReply[0][0].switch_inline_query)) 
+                            app.send_message(ids["CW"],str(mensaje.reply_markup.ForceReply[0][0].switch_inline_query))      
+                            
             elif (mensaje.chat.id==ids["Auction"]) and ofertas:
                 if "Mystery" in mensaje.text: 
                     time.sleep(timer)
