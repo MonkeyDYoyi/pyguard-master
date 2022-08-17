@@ -1649,7 +1649,7 @@ class main:
                 #pass
         
         @app.on_message(Filters.chat(list(ids.values())) & Filters.text & ~Filters.scheduled)
-        def cliente(client, message):
+        def cliente(client: Client, message: Message):
             nonlocal api_session, FirstTime
             if message.chat.id!=1217879961: #no es de Basuramia_bot
                 if(FirstTime):
