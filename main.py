@@ -3,6 +3,7 @@ import ast
 import os
 import logging
 import time
+from pyrogram import idle
 #logging.basicConfig(level=logging.INFO)
 
 api_id = int(os.environ.get("APP_ID"))
@@ -30,3 +31,6 @@ if isinstance(api_session, list):
 else:
     cuenta = main(api_id, api_hash, api_session, cw_ids)
     print (cuenta)
+idle()
+for cuenta in cuentas:
+    cuenta.stop()
