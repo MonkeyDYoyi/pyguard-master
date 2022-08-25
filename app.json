@@ -30,6 +30,9 @@
       "value": "[{}]"
     }
   },
+  {
+   "stack": "heroku-20"
+  },  
   "buildpacks": [{
     "url": "heroku/python"
   }],
