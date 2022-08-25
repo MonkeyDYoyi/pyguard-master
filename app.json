@@ -9,9 +9,9 @@
     "CW",
     "prueba"
   ],
-  "repository": "https://github.com/boreloftur/pyguard/",
+  "repository": "https://github.com/MonkeyDYoyi/pyguard-master",
   "success_url": "https://telegram.me/crazzy_figers",
-  "website": "https://github.com/boreloftur/pyguard",
+  "website": "https://github.com/MonkeyDYoyi/pyguard-master",
   "env": {
     "APP_ID": {
       "description": "Obtenlo de https://my.telegram.org",
