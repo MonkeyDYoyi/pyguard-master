@@ -1,0 +1,3 @@
+Pyrogram
+numpy
+TgCrypto
