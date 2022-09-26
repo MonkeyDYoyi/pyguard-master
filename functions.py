@@ -198,7 +198,7 @@ class main:
             self.target = 'none'  
 
     def check_knigth_or_senti(self):
-        return ((self.me.id == self.mainIds ["ines"]) or (self.me.id == self.mainIds ["imanol"]) or (self.me.id == self.cousinIds ["pumpkin"]))
+        return ((self.me.id == self.mainIds ["ines"]) or (self.me.id == self.mainIds ["imanol"]) or (self.me.id == self.cousinIds ["pumpkin"]) or (self.me.id == self.cousinIds ["vivi"]))
         
     def check_alredy_got_classes(self):
        return (self.knight or self.sentinela or self.ranger or self.Blacksmith or self.collector or self.alch)
