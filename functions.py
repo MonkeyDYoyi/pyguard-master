@@ -35,7 +35,7 @@ class main:
         """
         self.mainIds ["yoyi"] = 645258806
         self.mainIds ["ines"] = 835010162
-        self.mainIds ["imanol"] = 716287267
+        # self.mainIds ["imanol"] = 716287267
         """
         COUSINS IDS
         """
