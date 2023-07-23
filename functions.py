@@ -13,170 +13,172 @@ from pyrogram.errors import AuthKeyUnregistered, MessageIdInvalid, AuthKeyDuplic
 
 log = logging.getLogger()
 
-class main:
-    def __init__(self, api_id, api_hash, api_session, CW_ids:dict={}):        
+class pyguard:
+    def __init__(self, cliente):
+        # self.api_id = api_id
+        # self.api_hash = api_hash
+        # self.api_session = api_session 
+        # self.app = Client(api_session, api_id=self.api_id, api_hash=self.api_hash, session_string=api_session) 
+        self.app = cliente       
         
-        self.api_id = api_id
-        self.api_hash = api_hash
-        self.api_session = api_session 
-        self.app = Client(api_session, api_id=self.api_id, api_hash=self.api_hash, session_string=api_session)
+    async def initial_conditions(self, CW_ids:dict={}):
+        async with self.app:
+            # self.start()
+
+            self.ids = {}
+            self.mainIds = {}
+            self.cousinIds = {}
         
-        # self.start()
+            self.me = await self.app.get_me()
+            self.me.username = self.me.username if self.me.username else self.me.first_name
 
-        self.ids = {}
-        self.mainIds = {}
-        self.cousinIds = {}
-       
-        self.me=self.app.get_me()
-        self.me.username = self.me.username if self.me.username else self.me.first_name
+            """
+            MAINS IDS
+            """
+            self.mainIds ["yoyi"] = 645258806
+            self.mainIds ["ines"] = 835010162
+            self.mainIds ["imanol"] = 716287267
+            """
+            COUSINS IDS
+            """
+            self.cousinIds ["sheik"] = 925069789
+            self.cousinIds ["vivi"] = 721073856
+            self.cousinIds ["pumpkin"] = 959027567
+            self.cousinIds ["harry"] = 896337255
 
-        """
-        MAINS IDS
-        """
-        self.mainIds ["yoyi"] = 645258806
-        self.mainIds ["ines"] = 835010162
-        # self.mainIds ["imanol"] = 716287267
-        """
-        COUSINS IDS
-        """
-        self.cousinIds ["sheik"] = 925069789
-        self.cousinIds ["vivi"] = 721073856
-        self.cousinIds ["pumpkin"] = 959027567
-        self.cousinIds ["harry"] = 896337255
+            """
+            CW CODE
+            """
+            self.ids["CW"] = 408101137 #game
+            self.ids["CastleOrders"] = -1001155831076 #Lupus
+            self.ids["Auction"] = -1001209424945 #Auctions
+            self.ids["Grup"] = -1001386769293 #Coffee Break Guild Chat
+            self.ids["Canal"] = -1001194163201 #Coffee Break Guild Channel
+            self.ids["Caza"] = 807376493 #Botdecaza
+            self.ids["helper"] = 1137518285 #Bot de ayuda dreadwitch
+            self.ids["RangerSquad"] = -1001227862489
+            self.ids["spam_CB"] = -1001155668487
+            self.ids["GrupBlanco"] = -1001192852225#Coffee Break Guild Chat clean
+            self.ids["Suicide_Squad"] = -1001367858712 #Canal del escuadrón suicida
+            self.ids["EVENT"] = -1001744603110 #EVENT GROUP
+            self.ids["EVENT2"] = -1001249772299 #EVENT GROUP 2
+            self.ids["Lycaon"] =  976918452#Lycaon bot
+            
+            try:
+                self.ids.update(CW_ids)
+            except:
+                log.warning("CW_ids not found or is an incorrect dict")
 
-        """
-        CW CODE
-        """
-        self.ids["CW"] = 408101137 #game
-        self.ids["CastleOrders"] = -1001155831076 #Lupus
-        self.ids["Auction"] = -1001209424945 #Auctions
-        self.ids["Grup"] = -1001386769293 #Coffee Break Guild Chat
-        self.ids["Canal"] = -1001194163201 #Coffee Break Guild Channel
-        self.ids["Caza"] = 807376493 #Botdecaza
-        self.ids["helper"] = 1137518285 #Bot de ayuda dreadwitch
-        self.ids["RangerSquad"] = -1001227862489
-        self.ids["spam_CB"] = -1001155668487
-        self.ids["GrupBlanco"] = -1001192852225#Coffee Break Guild Chat clean
-        self.ids["Suicide_Squad"] = -1001367858712 #Canal del escuadrón suicida
-        self.ids["EVENT"] = -1001744603110 #EVENT GROUP
-        self.ids["EVENT2"] = -1001249772299 #EVENT GROUP 2
-        self.ids["Lycaon"] =  976918452#Lycaon bot
-        
-        try:
-            self.ids.update(CW_ids)
-        except:
-            log.warning("CW_ids not found or is an incorrect dict")
+            self.GC = True if (self.me.id == self.cousinIds ["pumpkin"]) else False
+            self.auto_quest=False
+            self.caza = False
+            self.quest = "🍄Swamp" #if ((self.me.id == 645258806) or (me.id == 740687108)) else ("🌲Forest" if  (me.id == 645258856 or me.id == 1347467384) else "🍄Swamp") 
+            self.level=-1
+            self.ff=True
+            self.collector = False
+            self.Blacksmith = False 
+            self.alch = False
+            self.knight = False
+            self.ranger = False
+            self.sentinela = False 
+            self.en_quest=False
+            self.gast_stmn=True        
+            self.tactics = "/tactics_eagles"
+            self.cod_trader = "09"
+            self.trader = False 
+            self.ofertas = False 
+            self.ambush = False if self.ranger else True 
+            self.ordenes = True #False if ranger else True 
+            self.tregua = False
+            self.rango_max = 6
+            self.dice = False
+            self.general = True if self.me.id == self.mainIds["ines"] else False
+            self.general2 = False
+            self.orden_adelantada = False
+            self.defensores = False  
+            self.apuntar = False
+            self.pet = False 
+            self.gopher = False 
+            self.warra = False
+            self.pasapasa = False
+            self.vago = False
+            #added by Yoyi for testing porpouse
+            self.vago_yoyi = True if (self.me.id == self.mainIds ["yoyi"]) else False 
+            self.ratio = 0.7
+            self.ratio_actual = 0
+            # hp_regen_rate = 6
+            # hunt_alredy_delayed = False
+            self.alredy_defending = False
+            self.target = 'none'
+            self.FirstTime = False
+            self.offhand_atack = 'none'
+            self.offhand_defend = 'none'
+            self.venom = True
+            self.wait_time = 0
+            self.tempbool = False
+            self.tempID = 0
+            self.autoOpenShop = False #True if (self.me.id == self.mainIds ["yoyi"]) else False
+            self.stamina = 0
 
-        self.GC = True if (self.me.id == self.cousinIds ["pumpkin"]) else False
-        self.auto_quest=False
-        self.caza = False
-        self.quest = "🍄Swamp" #if ((self.me.id == 645258806) or (me.id == 740687108)) else ("🌲Forest" if  (me.id == 645258856 or me.id == 1347467384) else "🍄Swamp") 
-        self.level=-1
-        self.ff=True
-        self.collector = False
-        self.Blacksmith = False 
-        self.alch = False
-        self.knight = False
-        self.ranger = False
-        self.sentinela = False 
-        self.en_quest=False
-        self.gast_stmn=True        
-        self.tactics = "/tactics_eagles"
-        self.cod_trader = "09"
-        self.trader = False 
-        self.ofertas = False 
-        self.ambush = False if self.ranger else True 
-        self.ordenes = True #False if ranger else True 
-        self.tregua = False
-        self.rango_max = 6
-        self.dice = False
-        self.general = True if self.me.id == self.mainIds["ines"] else False
-        self.general2 = False
-        self.orden_adelantada = False
-        self.defensores = False  
-        self.apuntar = False
-        self.pet = False 
-        self.gopher = False 
-        self.warra = False
-        self.pasapasa = False
-        self.vago = False
-        #added by Yoyi for testing porpouse
-        self.vago_yoyi = True if (self.me.id == self.mainIds ["yoyi"]) else False 
-        self.ratio = 0.7
-        self.ratio_actual = 0
-        # hp_regen_rate = 6
-        # hunt_alredy_delayed = False
-        self.alredy_defending = False
-        self.target = 'none'
-        self.FirstTime = False
-        self.offhand_atack = 'none'
-        self.offhand_defend = 'none'
-        self.venom = True
-        self.wait_time = 0
-        self.tempbool = False
-        self.tempID = 0
-        self.autoOpenShop = False #True if (self.me.id == self.mainIds ["yoyi"]) else False
-        self.stamina = 0
+            #added by yoyi
+            self.battle_hours = {}
+            self.battle_hours["Batalla_7pm_-4UTC"] = 23 
+            self.battle_hours["Batalla_3am_-4UTC"] = 7 
+            self.battle_hours["Batalla_11am_-4UTC"] = 15 
+            try:
+                os.environ["YOYI_HUNT_GLOBAL"]
+            except:
+                os.environ["YOYI_HUNT_GLOBAL"] = "TRUE"
 
-        #added by yoyi
-        self.battle_hours = {}
-        self.battle_hours["Batalla_7pm_-4UTC"] = 23 
-        self.battle_hours["Batalla_3am_-4UTC"] = 7 
-        self.battle_hours["Batalla_11am_-4UTC"] = 15 
-        try:
-            os.environ["YOYI_HUNT_GLOBAL"]
-        except:
-            os.environ["YOYI_HUNT_GLOBAL"] = "TRUE"
+            if (self.me.id == self.mainIds ["yoyi"] or self.me.id == self.cousinIds ["sheik"] or self.me.id == self.cousinIds ["vivi"]):
+                self.ids["helper"] = 1242346205 #Bot de ayuda mugiwarabot
+            if (self.me.id == self.mainIds ["yoyi"]):
+                self.caza = True
+                self.ratio = 0.5 
+            self.loop_quest = False
+            self.taberna = False
+            self.event_flag = True
+            self.mensaje_id = [12345]
+            #end added by yoyi
 
-        if (self.me.id == self.mainIds ["yoyi"] or self.me.id == self.cousinIds ["sheik"] or self.me.id == self.cousinIds ["vivi"]):
-            self.ids["helper"] = 1242346205 #Bot de ayuda mugiwarabot
-        if (self.me.id == self.mainIds ["yoyi"]):
-            self.caza = True
-            self.ratio = 0.5 
-        self.loop_quest = False
-        self.taberna = False
-        self.event_flag = True
-        self.mensaje_id = [12345]
-        #end added by yoyi
+            self.envio_rep = True if self.vago else False
 
-        self.envio_rep = True if self.vago else False
-
-        # self.chat_on()
-        # #if ids["CW"] != 1217879961: #No está en la basura..
-        #        #self.app.send_message(ids["CW"],"🏅Me")
-        #        #time.sleep(10)
-        #        #self.app.send_message(ids["CW"],"/hero")
-        #        #time.sleep(10)
-        # if self.ids["helper"] != 1217879961: #No está en la basura...
-        #        self.app.send_message(self.ids["helper"],"Bot reiniciado...!!! 😜😘")                
-        #        self.reporte()
-        #      #  mascota()
-        # @self.app.on_message(filters.chat(list(self.ids.values())) & filters.text & ~filters.scheduled)
-        # def cliente(client: Client, message: Message):
-        #     if message.chat.id!=1217879961: #no es de Basuramia_bot
-        #         if(self.FirstTime):
-        #             self.FirstTime = False
-        #             self.app.send_message(self.ids["CW"],"🏅Me")
-        #             time.sleep(3)
-        #             self.app.send_message(self.ids["CW"],"/hero")
-        #             #time.sleep(10)                    
-        #         #try:
-        #             #if BS: selector_BS(message)
-        #         # except Exception as e:
-        #             # log.warning(str(me.username)+" ha sufrido un error:", exc_info=True)
-        #         try:
-        #             self.selector_CW(message)
-        #         except Exception as e:
-        #             log.warning(str(self.me.username)+" ha sufrido un error:", exc_info=True)
-        #     elif message.text == "ids":
-        #         self.app.send_message(1217879961,str(self.ids))
-        #     elif message.text == "users":
-        #         usuarios = self.app.get_chat_members(-1001386769293)
-        #         #usuarios += self.app.get_chat_members(-1001455157282) #🔲 Alianza DRK EKE
-        #         self.app.send_message(1217879961,str([[member.user.first_name, member.user.id] for member in usuarios]))
-        #     elif message.text == "hash":
-        #         self.app.send_message(1217879961,str(api_session[0:20]))
-        #         self.app.send_message(1217879961,str(api_session[-21:]))
+            # self.chat_on()
+            # #if ids["CW"] != 1217879961: #No está en la basura..
+            #        #self.app.send_message(ids["CW"],"🏅Me")
+            #        #time.sleep(10)
+            #        #self.app.send_message(ids["CW"],"/hero")
+            #        #time.sleep(10)
+            # if self.ids["helper"] != 1217879961: #No está en la basura...
+            #        self.app.send_message(self.ids["helper"],"Bot reiniciado...!!! 😜😘")                
+            #        self.reporte()
+            #      #  mascota()
+            # @self.app.on_message(filters.chat(list(self.ids.values())) & filters.text & ~filters.scheduled)
+            # def cliente(client: Client, message: Message):
+            #     if message.chat.id!=1217879961: #no es de Basuramia_bot
+            #         if(self.FirstTime):
+            #             self.FirstTime = False
+            #             self.app.send_message(self.ids["CW"],"🏅Me")
+            #             time.sleep(3)
+            #             self.app.send_message(self.ids["CW"],"/hero")
+            #             #time.sleep(10)                    
+            #         #try:
+            #             #if BS: selector_BS(message)
+            #         # except Exception as e:
+            #             # log.warning(str(me.username)+" ha sufrido un error:", exc_info=True)
+            #         try:
+            #             self.selector_CW(message)
+            #         except Exception as e:
+            #             log.warning(str(self.me.username)+" ha sufrido un error:", exc_info=True)
+            #     elif message.text == "ids":
+            #         self.app.send_message(1217879961,str(self.ids))
+            #     elif message.text == "users":
+            #         usuarios = self.app.get_chat_members(-1001386769293)
+            #         #usuarios += self.app.get_chat_members(-1001455157282) #🔲 Alianza DRK EKE
+            #         self.app.send_message(1217879961,str([[member.user.first_name, member.user.id] for member in usuarios]))
+            #     elif message.text == "hash":
+            #         self.app.send_message(1217879961,str(api_session[0:20]))
+            #         self.app.send_message(1217879961,str(api_session[-21:]))
         
         #added by Yoyi for testing porpouse
     def get_target(self, mensaje: Message):

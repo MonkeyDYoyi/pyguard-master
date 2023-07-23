@@ -1,9 +1,10 @@
-from functions import main
+from functions import pyguard
 import ast
 import os
 import logging
 import time
 from pyrogram import idle
+from pyrogram import Client
 #logging.basicConfig(level=logging.INFO)
 
 api_id = int(os.environ.get("APP_ID"))
@@ -26,11 +27,19 @@ except:
     cw_ids = [{} for i in api_session]    
     
 if isinstance(api_session, list):
-    cuentas = [
-        main(api_id,api_hash,str(api_session[i]),cw_ids[i]) for i in range(len(api_session))]
+    clientes = [Client(str(api_session[i]), api_id=api_id, api_hash=api_hash, session_string=api_session[i]) for i in range(len(api_session))]
+    cuentas = [pyguard(clientes[i]) for i in range(len(api_session))]
+    
+    for i in range(len(api_session)):
+        clientes[i].run(cuentas[i].initial_conditions())
+
 else:
-    cuenta = main(api_id, api_hash, api_session, cw_ids)
+    cliente = Client(str(api_session), api_id=api_id, api_hash=api_hash, session_string=api_session)
+    cuenta = pyguard(cliente)
+
+    cliente.run(cuenta.initial_conditions())
+
     print (cuenta)
 idle()
-for cuenta in cuentas:
-    cuenta.stop()
+# for cuenta in cuentas:
+#     cuenta.stop()
