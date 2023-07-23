@@ -53,6 +53,7 @@ app = Client(str(api_session), api_id=api_id, api_hash=api_hash, session_string=
 async def main():
     async with app:
         await app.send_message("me", "Hi!")
+        
 
 
 app.run(main())
