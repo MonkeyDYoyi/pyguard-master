@@ -21,7 +21,7 @@ class pyguard:
         # self.app = Client(api_session, api_id=self.api_id, api_hash=self.api_hash, session_string=api_session) 
         self.app = cliente   
 
-    async def test_method(self)
+    async def test_method(self):
         async with self.app:
             await self.app.send_message("me", "Hi!")
         
