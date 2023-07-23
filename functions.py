@@ -21,7 +21,7 @@ class main:
         self.api_session = api_session 
         self.app = Client(api_session, api_id=self.api_id, api_hash=self.api_hash, session_string=api_session)
         
-        self.start()
+        # self.start()
 
         self.ids = {}
         self.mainIds = {}
