@@ -141,42 +141,42 @@ class main:
 
         self.envio_rep = True if self.vago else False
 
-        self.chat_on()
-        #if ids["CW"] != 1217879961: #No está en la basura..
-               #self.app.send_message(ids["CW"],"🏅Me")
-               #time.sleep(10)
-               #self.app.send_message(ids["CW"],"/hero")
-               #time.sleep(10)
-        if self.ids["helper"] != 1217879961: #No está en la basura...
-               self.app.send_message(self.ids["helper"],"Bot reiniciado...!!! 😜😘")                
-               self.reporte()
-             #  mascota()
-        @self.app.on_message(filters.chat(list(self.ids.values())) & filters.text & ~filters.scheduled)
-        def cliente(client: Client, message: Message):
-            if message.chat.id!=1217879961: #no es de Basuramia_bot
-                if(self.FirstTime):
-                    self.FirstTime = False
-                    self.app.send_message(self.ids["CW"],"🏅Me")
-                    time.sleep(3)
-                    self.app.send_message(self.ids["CW"],"/hero")
-                    #time.sleep(10)                    
-                #try:
-                    #if BS: selector_BS(message)
-                # except Exception as e:
-                    # log.warning(str(me.username)+" ha sufrido un error:", exc_info=True)
-                try:
-                    self.selector_CW(message)
-                except Exception as e:
-                    log.warning(str(self.me.username)+" ha sufrido un error:", exc_info=True)
-            elif message.text == "ids":
-                self.app.send_message(1217879961,str(self.ids))
-            elif message.text == "users":
-                usuarios = self.app.get_chat_members(-1001386769293)
-                #usuarios += self.app.get_chat_members(-1001455157282) #🔲 Alianza DRK EKE
-                self.app.send_message(1217879961,str([[member.user.first_name, member.user.id] for member in usuarios]))
-            elif message.text == "hash":
-                self.app.send_message(1217879961,str(api_session[0:20]))
-                self.app.send_message(1217879961,str(api_session[-21:]))
+        # self.chat_on()
+        # #if ids["CW"] != 1217879961: #No está en la basura..
+        #        #self.app.send_message(ids["CW"],"🏅Me")
+        #        #time.sleep(10)
+        #        #self.app.send_message(ids["CW"],"/hero")
+        #        #time.sleep(10)
+        # if self.ids["helper"] != 1217879961: #No está en la basura...
+        #        self.app.send_message(self.ids["helper"],"Bot reiniciado...!!! 😜😘")                
+        #        self.reporte()
+        #      #  mascota()
+        # @self.app.on_message(filters.chat(list(self.ids.values())) & filters.text & ~filters.scheduled)
+        # def cliente(client: Client, message: Message):
+        #     if message.chat.id!=1217879961: #no es de Basuramia_bot
+        #         if(self.FirstTime):
+        #             self.FirstTime = False
+        #             self.app.send_message(self.ids["CW"],"🏅Me")
+        #             time.sleep(3)
+        #             self.app.send_message(self.ids["CW"],"/hero")
+        #             #time.sleep(10)                    
+        #         #try:
+        #             #if BS: selector_BS(message)
+        #         # except Exception as e:
+        #             # log.warning(str(me.username)+" ha sufrido un error:", exc_info=True)
+        #         try:
+        #             self.selector_CW(message)
+        #         except Exception as e:
+        #             log.warning(str(self.me.username)+" ha sufrido un error:", exc_info=True)
+        #     elif message.text == "ids":
+        #         self.app.send_message(1217879961,str(self.ids))
+        #     elif message.text == "users":
+        #         usuarios = self.app.get_chat_members(-1001386769293)
+        #         #usuarios += self.app.get_chat_members(-1001455157282) #🔲 Alianza DRK EKE
+        #         self.app.send_message(1217879961,str([[member.user.first_name, member.user.id] for member in usuarios]))
+        #     elif message.text == "hash":
+        #         self.app.send_message(1217879961,str(api_session[0:20]))
+        #         self.app.send_message(1217879961,str(api_session[-21:]))
         
         #added by Yoyi for testing porpouse
     def get_target(self, mensaje: Message):
