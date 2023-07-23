@@ -31,7 +31,7 @@ if isinstance(api_session, list):
     cuentas = [pyguard(clientes[i]) for i in range(len(api_session))]
     
     for i in range(len(api_session)):
-        clientes[i].run(cuentas[i].initial_conditions())
+        clientes[i].run(cuentas[i].test_method())
 
 else:
     cliente = Client(str(api_session), api_id=api_id, api_hash=api_hash, session_string=api_session)

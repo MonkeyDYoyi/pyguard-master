@@ -19,7 +19,11 @@ class pyguard:
         # self.api_hash = api_hash
         # self.api_session = api_session 
         # self.app = Client(api_session, api_id=self.api_id, api_hash=self.api_hash, session_string=api_session) 
-        self.app = cliente       
+        self.app = cliente   
+
+    async def test_method(self)
+        async with self.app:
+            await self.app.send_message("me", "Hi!")
         
     async def initial_conditions(self, CW_ids:dict={}):
         async with self.app:
