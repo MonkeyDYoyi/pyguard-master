@@ -29,9 +29,16 @@ except:
 if isinstance(api_session, list):
     clientes = [Client(str(api_session[i]), api_id=api_id, api_hash=api_hash, session_string=api_session[i]) for i in range(len(api_session))]
     cuentas = [pyguard(clientes[i]) for i in range(len(api_session))]
+
+    async def test():
+        async with clientes[0]:
+            await clientes[0].send_message("me", "Hi!")
+
+
+    clientes[0].run(test())
     
-    for i in range(len(api_session)):
-        clientes[i].run(cuentas[i].test_method())
+    # for i in range(len(api_session)):
+    #     clientes[i].run(cuentas[i].test_method())
 
 else:
     cliente = Client(str(api_session), api_id=api_id, api_hash=api_hash, session_string=api_session)
