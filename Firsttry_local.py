@@ -17,6 +17,10 @@ import os
 
 # api_id = int(os.environ.get("APP_ID"))
 # api_hash = str(os.environ.get("API_HASH"))
+
+# api_id = int(1337414)
+# api_hash = str("7e280b5751e5ce2c413239c412976c31")
+
 api_id = int(1337414)
 api_hash = str("7e280b5751e5ce2c413239c412976c31")
 

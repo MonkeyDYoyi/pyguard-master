@@ -11,7 +11,7 @@ from pyrogram import idle
 # api_session = str(os.environ.get("SESSION"))
 api_id = int(1337414)
 api_hash = str("7e280b5751e5ce2c413239c412976c31")
-api_session = str("AQAUaEYAI5HsvsoLEf0t1jTms6vg3SGuQRYPGfzB5e40suYDUtM0h2r8iX4q4iqIQ-WIVAvU9XS5MBwo2PPdcJrdVyqZpF0oa7e_YOmMAOW5wXfgvZTnOwpIIHq11F14m6k2VXnLtgPuWalI5K7frwULMBhmzbfzKsOPBCw3yY8A4aiQtUlu93xoIrGbDJnkVKYJ4xZkyqGQ_W1fiA7hPvGuMhngBscARJ8AagodF4bLmsm_0dp-Wt4ao_6vZQ_VLp2Hra9XZQsh8CxSVe2JLAS38g_C5ZpFz8a-9K85hXGZ83LrobBiLdehSEtIxnwfBZ7H2LUeOydJfXswbhToiHturZNnZAAAAAAmdd42AA")
+api_session = str("[AQAUaEYAACeHXf46UtKs6vhBehukHNdbmv2vNz9MZkiojr-5tvC0qQYpTDfq3LoyjtrGaGZ6z7f1O11s-xl17ye6hYo-j1ijk1dPd-JYdltBgBeSMI_fxR358H-FE3XvtrpmBGXOzHlQVASO4HWP_-IkbLIL_SE60_UmriPrMUwTYszlA9eQ5wnzC70nC5xZVc-Xlx2Sg_Wqe-M2Z0fXqFuTvHZCMKeeJmGEcWx8whddckg8cBkZH0aKxTiBjrRD10_N37rjkY4dViWMXKkm_60heJfuJatU3EWXRoETr5hX9t9cM-trr08gT_p4oSc8XojNlVngm0eoCKEkS79Ma6cFbqtujAAAAAAmdd42AA]")
 
 try:
     api_session = api_session.strip('][').split(', ') 
